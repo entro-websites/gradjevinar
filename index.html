@@ -3,1230 +3,2925 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Građevinar - generalni izvođač, ključ u ruke od 1989. godine</title>
-<meta name="description" content="Građevinar d.o.o. projektuje, gradi i rekonstruiše industrijske, komercijalne i rezidencijalne objekte po sistemu ključ u ruke. Preko 300 realizovanih projekata od 1989. godine.">
+<title>Građevinar d.o.o. - generalni izvođač po sistemu ključ u ruke od 1989.</title>
+<meta name="description" content="Građevinar d.o.o. iz Beograda projektuje, gradi i rekonstruiše industrijske, poslovne i stambene objekte po sistemu ključ u ruke. Preko 300 projekata i 1.000.000 m² od 1989. godine.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hero-muehlbauer.jpg">
+<script>
+  // Animacije palimo samo kad ima JS-a i kad korisnik nije tražio manje pokreta
+  document.documentElement.classList.add('js');
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('motion');
+  }
+</script>
 <style>
-  :root {
-    --accent: #1a5391;
-    --accent-dark: #113a68;
-    --accent-darker: #0c2c50;
-    --accent-soft: rgba(26, 83, 145, 0.08);
-    --accent-soft-2: rgba(26, 83, 145, 0.14);
-    --accent-glow: rgba(26, 83, 145, 0.22);
-    --text: rgba(15, 20, 26, 0.94);
-    --text-muted: rgba(15, 20, 26, 0.66);
-    --text-faint: rgba(15, 20, 26, 0.46);
-    --bg-off: #f7f9fb;
-    --radius-btn: 6px;
-    --radius-card: 14px;
+  :root{
+    --accent:#1a5391;
+    --accent-600:#16477d;
+    --accent-700:#113a68;
+    --accent-300:#7fa9dc;
+    --accent-200:#b9d0ee;
+    --accent-soft:rgba(26,83,145,.08);
+    --accent-soft-2:rgba(26,83,145,.14);
+    --navy:#081a31;
+    --navy-2:#0c2442;
+    --navy-3:#113057;
+    --ink:#0e1621;
+    --muted:rgba(14,22,33,.68);
+    --faint:rgba(14,22,33,.48);
+    --line:rgba(14,22,33,.12);
+    --line-soft:rgba(14,22,33,.08);
+    --paper:#f3f5f8;
+    --on-dark:#ffffff;
+    --on-dark-muted:rgba(255,255,255,.68);
+    --on-dark-faint:rgba(255,255,255,.44);
+    --on-dark-line:rgba(255,255,255,.14);
+    --r:4px;
+    --ease:cubic-bezier(.2,.7,.2,1);
+    --mono:'IBM Plex Mono', ui-monospace, monospace;
+    --sans:'Archivo', system-ui, sans-serif;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body{
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    color:var(--ink);
+    background:#ffffff;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{ display:block; max-width:100%; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
+  section[id]{ scroll-margin-top:72px; }
 
-  html {
-    scroll-behavior: smooth;
+  h1,h2,h3,h4{
+    font-family:var(--sans);
+    font-stretch:112%;
+    font-weight:700;
+    line-height:1.08;
+    letter-spacing:-.02em;
+    color:var(--ink);
+  }
+  p{ color:var(--muted); }
+
+  .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+  .wrap{
+    max-width:1280px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:24px;
+    padding-right:24px;
+  }
+  @media (max-width:768px){
+    .wrap{ padding-left:20px; padding-right:20px; }
   }
 
-  body {
-    font-family: 'Roboto', sans-serif;
-    color: var(--text);
-    background: #ffffff;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+  .sec{ padding-top:128px; padding-bottom:128px; position:relative; }
+  @media (max-width:768px){
+    .sec{ padding-top:80px; padding-bottom:80px; }
+  }
+  .paper{ background:var(--paper); }
+  .dark{ background:var(--navy); color:var(--on-dark); }
+  .dark h2, .dark h3, .dark h4{ color:var(--on-dark); }
+  .dark p{ color:var(--on-dark-muted); }
+
+  /* Tehnička etiketa (mono) */
+  .tag{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+  .tag::before{
+    content:"";
+    width:24px;
+    height:1px;
+    background:currentColor;
+  }
+  .dark .tag{ color:var(--accent-300); }
+
+  .head{ max-width:720px; margin-bottom:64px; }
+  .head .tag{ margin-bottom:20px; }
+  .head h2{ font-size:clamp(32px, 4.2vw, 56px); margin-bottom:20px; }
+  .head p{ font-size:20px; max-width:60ch; }
+  .head-row{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:32px;
+    margin-bottom:64px;
+  }
+  .head-row .head{ margin-bottom:0; }
+  @media (max-width:768px){
+    .head{ margin-bottom:48px; }
+    .head p{ font-size:16px; }
+    .head-row{ flex-direction:column; align-items:flex-start; margin-bottom:48px; }
   }
 
-  h1, h2, h3, h4 {
-    font-family: 'Poppins', sans-serif;
-    color: var(--text);
-    line-height: 1.2;
+  /* Dugme: jedan stil na celom sajtu, strelica je modifikator */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    min-height:56px;
+    padding-left:28px;
+    padding-right:28px;
+    font-family:var(--sans);
+    font-stretch:108%;
+    font-size:16px;
+    font-weight:600;
+    color:#ffffff;
+    background:var(--accent);
+    border:1px solid var(--accent);
+    border-radius:0;
+    white-space:nowrap;
+    transition:background .25s var(--ease), border-color .25s var(--ease);
   }
+  .btn:hover{ background:var(--accent-700); border-color:var(--accent-700); }
+  @media (max-width:400px){ .btn{ white-space:normal; text-align:center; padding-left:20px; padding-right:20px; } }
+  .btn:focus-visible, .link:focus-visible, .chip:focus-visible{ outline:2px solid var(--accent-300); outline-offset:4px; }
+  .btn.has-arrow svg{ width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:1.8; transition:transform .25s var(--ease); }
+  .btn.has-arrow:hover svg{ transform:translateX(4px); }
+  .dark .btn:hover{ background:#ffffff; color:var(--navy); border-color:#ffffff; }
 
-  p { color: var(--text-muted); }
-
-  a { color: inherit; text-decoration: none; }
-
-  img { max-width: 100%; display: block; }
-
-  .wrap {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding-left: 24px;
-    padding-right: 24px;
+  /* Tekstualni link (nije dugme) */
+  .link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:600;
+    font-size:16px;
+    color:var(--accent);
+    border-bottom:1px solid currentColor;
+    padding-bottom:4px;
+    transition:gap .25s var(--ease);
   }
+  .link:hover{ gap:12px; }
+  .link svg{ width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:2; }
+  .dark .link{ color:#ffffff; }
 
-  @media (max-width: 768px) {
-    .wrap { padding-left: 20px; padding-right: 20px; }
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    background:#050f1f;
+    color:var(--on-dark-muted);
+    font-size:12px;
+    font-family:var(--mono);
+    letter-spacing:.04em;
   }
-
-  section { position: relative; }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 14px;
+  .topbar .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    min-height:40px;
   }
-
-  .eyebrow::before {
-    content: "";
-    width: 20px;
-    height: 2px;
-    background: var(--accent);
-    display: inline-block;
+  .topbar-l, .topbar-r{ display:flex; align-items:center; gap:24px; }
+  .topbar a:hover{ color:#ffffff; }
+  .topbar svg{ width:16px; height:16px; stroke:var(--accent-300); fill:none; stroke-width:1.6; vertical-align:-4px; margin-right:8px; }
+  .langs{ display:flex; gap:12px; }
+  .langs a{ color:var(--on-dark-faint); }
+  .langs .on{ color:#ffffff; }
+  @media (max-width:991px){
+    .topbar .addr, .topbar .fax{ display:none; }
   }
-
-  .section-head {
-    max-width: 640px;
-    margin-bottom: 48px;
+  @media (max-width:600px){
+    .topbar .mail{ display:none; }
   }
-
-  .section-head h2 {
-    font-size: clamp(28px, 3.4vw, 40px);
-    font-weight: 700;
-    margin-bottom: 16px;
-  }
-
-  .section-head p {
-    font-size: 16.5px;
-    max-width: 60ch;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    padding: 15px 28px;
-    border-radius: var(--radius-btn);
-    border: 1.5px solid transparent;
-    cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-    white-space: nowrap;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #ffffff;
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-dark);
-    transform: translateY(-1px);
-  }
-
-  .btn-outline {
-    background: transparent;
-    border-color: rgba(15, 20, 26, 0.18);
-    color: var(--text);
-  }
-
-  .btn-outline:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  .btn-lg { padding: 17px 34px; font-size: 16px; }
 
   /* ---------- HEADER ---------- */
-
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 200;
-    background: #ffffff;
-    border-bottom: 1px solid rgba(15, 20, 26, 0.08);
-    transition: backdrop-filter 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  .site-header{
+    position:sticky;
+    top:0;
+    z-index:300;
+    background:var(--navy);
+    border-bottom:1px solid var(--on-dark-line);
+    transition:background .3s var(--ease);
   }
-
-  .site-header.scrolled {
-    background: rgba(255, 255, 255, 0.86);
-    backdrop-filter: blur(14px);
-    box-shadow: 0 6px 24px rgba(15, 20, 26, 0.06);
+  .site-header.scrolled{
+    background:rgba(8,26,49,.86);
+    -webkit-backdrop-filter:blur(16px);
+    backdrop-filter:blur(16px);
   }
-
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 84px;
+  .header-in{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:80px;
   }
-
-  .logo { display: flex; align-items: center; gap: 10px; }
-  .logo-img { height: 40px; width: auto; }
-
-  .nav-desktop {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    font-size: 15px;
-    font-weight: 500;
+  .logo img{ height:40px; width:auto; filter:brightness(0) invert(1); }
+  .nav{ display:flex; align-items:center; gap:32px; }
+  .nav a{
+    font-size:16px;
+    font-weight:500;
+    color:var(--on-dark-muted);
+    position:relative;
+    transition:color .2s;
   }
-
-  .nav-desktop a { color: var(--text); position: relative; }
-  .nav-desktop a:hover { color: var(--accent); }
-
-  .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 22px;
+  .nav a::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:-8px;
+    height:1px;
+    background:var(--accent-300);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .3s var(--ease);
   }
+  .nav a:hover, .nav a.on{ color:#ffffff; }
+  .nav a:hover::after, .nav a.on::after{ transform:scaleX(1); }
+  .header-cta .btn{ min-height:48px; padding-left:24px; padding-right:24px; }
 
-  .lang-switch {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .burger{
+    display:none;
+    width:48px; height:48px;
+    align-items:center; justify-content:center;
+    flex-direction:column; gap:8px;
   }
+  .burger span{ display:block; width:24px; height:2px; background:#ffffff; transition:transform .3s var(--ease), opacity .2s; }
+  .burger.open span:nth-child(1){ transform:translateY(5px) rotate(45deg); }
+  .burger.open span:nth-child(2){ transform:translateY(-5px) rotate(-45deg); }
 
-  .lang-switch img {
-    height: 16px;
-    width: 24px;
-    object-fit: cover;
-    border-radius: 2px;
-    opacity: 0.55;
-    transition: opacity 0.2s ease;
+  .mnav{
+    display:none;
+    position:absolute;
+    left:0; right:0; top:100%;
+    background:var(--navy);
+    border-top:1px solid var(--on-dark-line);
+    padding-top:8px;
+    padding-bottom:32px;
+    max-height:calc(100vh - 80px);
+    overflow-y:auto;
   }
-
-  .lang-switch img:hover { opacity: 1; }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 40px;
-    height: 40px;
-    background: none;
-    border: none;
-    cursor: pointer;
+  .mnav.open{ display:block; }
+  .mnav a:not(.btn){
+    display:flex;
+    justify-content:space-between;
+    padding-top:16px;
+    padding-bottom:16px;
+    font-size:20px;
+    font-weight:600;
+    font-stretch:110%;
+    color:#ffffff;
+    border-bottom:1px solid var(--on-dark-line);
   }
-
-  .hamburger span {
-    width: 24px;
-    height: 2px;
-    background: var(--text);
-    display: block;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-  }
-
-  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.active span:nth-child(2) { opacity: 0; }
-  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  .mobile-menu {
-    display: none;
-    flex-direction: column;
-    padding: 8px 20px 28px;
-    gap: 4px;
-    border-top: 1px solid rgba(15, 20, 26, 0.08);
-    background: #ffffff;
-  }
-
-  .mobile-menu a {
-    padding: 14px 4px;
-    font-size: 16px;
-    font-weight: 500;
-    border-bottom: 1px solid rgba(15, 20, 26, 0.06);
-  }
-
-  .mobile-menu .btn { margin-top: 16px; width: 100%; }
-
-  .mobile-menu.open { display: flex; }
-
-  @media (max-width: 991px) {
-    .nav-desktop, .header-actions { display: none; }
-    .hamburger { display: flex; }
+  .mnav a:not(.btn) span{ font-family:var(--mono); font-size:12px; color:var(--on-dark-faint); font-weight:400; }
+  .mnav .btn{ width:100%; margin-top:24px; }
+  @media (max-width:991px){
+    .nav, .header-cta{ display:none; }
+    .burger{ display:flex; }
   }
 
   /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:var(--navy);
+    color:var(--on-dark);
+    overflow:hidden;
+    isolation:isolate;
+  }
+  /* blueprint mreža na tamnoj pozadini */
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(127,169,220,.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(127,169,220,.08) 1px, transparent 1px);
+    background-size:48px 48px;
+    -webkit-mask-image:radial-gradient(ellipse 70% 80% at 20% 40%, #000 20%, transparent 75%);
+    mask-image:radial-gradient(ellipse 70% 80% at 20% 40%, #000 20%, transparent 75%);
+    z-index:-1;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) minmax(0, 1.08fr);
+    align-items:center;
+    min-height:clamp(640px, calc(100svh - 120px), 820px);
+  }
+  .hero-copy{
+    padding-top:96px;
+    padding-bottom:96px;
+    padding-right:48px;
+    container-type:inline-size;
+  }
+  .hero-copy .tag{ margin-bottom:32px; color:var(--accent-300); }
+  .hero h1{
+    color:#ffffff;
+    font-size:64px;
+    font-size:clamp(40px, 5.4vw, 80px);
+    font-size:clamp(36px, 14.2cqi, 80px);
+    font-weight:700;
+    font-stretch:116%;
+    line-height:1;
+    letter-spacing:-.03em;
+    margin-bottom:32px;
+  }
+  .hero h1 span{ display:block; white-space:nowrap; }
+  .hero h1 .hl{ color:var(--accent-300); }
+  .hero-sub{
+    font-size:20px;
+    line-height:1.5;
+    color:var(--on-dark-muted);
+    max-width:36ch;
+    margin-bottom:40px;
+  }
+  .hero-actions{ display:flex; align-items:center; flex-wrap:wrap; gap:32px; }
+  .hero .btn:hover{ background:#ffffff; color:var(--navy); border-color:#ffffff; }
+  .hero-proof{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px 24px;
+    margin-top:48px;
+    padding-top:24px;
+    border-top:1px solid var(--on-dark-line);
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--on-dark-muted);
+  }
+  .hero-proof span{ display:inline-flex; align-items:center; gap:8px; }
+  .hero-proof svg{ width:16px; height:16px; stroke:var(--accent-300); fill:none; stroke-width:2; }
 
-  .hero {
-    position: relative;
-    min-height: 640px;
-    display: flex;
-    align-items: center;
-    background-image: url('assets/20251006_150416-scaled-uai-258x145.jpg');
-    background-size: cover;
-    background-position: center;
-    isolation: isolate;
+  /* Vizual: nacrt koji postaje objekat */
+  .hero-visual{
+    position:relative;
+    align-self:stretch;
+    margin-right:calc((min(100vw, 1280px) - 100vw) / 2 - 24px);
+    min-height:560px;
+    overflow:hidden;
+    background:var(--navy-3);
+  }
+  .bp-bg{
+    position:absolute; inset:0;
+    background-color:#0d3563;
+    background-image:
+      linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px),
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size:96px 96px, 96px 96px, 24px 24px, 24px 24px;
+    opacity:0;
+  }
+  .hero-photo{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:50% 50%;
+  }
+  .hero-visual::after{
+    /* blagi prelaz ka tekstu i dole ka brojkama */
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(90deg, rgba(8,26,49,.55) 0%, rgba(8,26,49,0) 24%),
+      linear-gradient(0deg, rgba(8,26,49,.6) 0%, rgba(8,26,49,0) 30%);
+    pointer-events:none;
+  }
+  .bp-lines, .sheen{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    pointer-events:none;
+  }
+  .bp-lines{ opacity:0; z-index:2; }
+  .bp-lines .d{
+    fill:none;
+    stroke:#ffffff;
+    stroke-width:2.4;
+    stroke-linecap:square;
+  }
+  .bp-lines .d.thin{ stroke-width:1.4; stroke:rgba(255,255,255,.7); }
+  .bp-lines .d.axis{ stroke:rgba(255,255,255,.55); stroke-width:1.4; }
+  .bp-lines text{
+    font-family:var(--mono);
+    font-size:24px;
+    fill:#ffffff;
+    letter-spacing:.08em;
+  }
+  .bp-lines .bubble{ fill:#0d3563; stroke:#ffffff; stroke-width:2; }
+  .sheen{ z-index:1; opacity:0; }
+  .build-line{
+    position:absolute;
+    left:0; right:0;
+    bottom:0;
+    height:2px;
+    background:#ffffff;
+    box-shadow:0 0 16px 4px rgba(127,169,220,.8);
+    opacity:0;
+    z-index:3;
+  }
+  .hero-status{
+    position:absolute;
+    top:24px; right:24px;
+    z-index:4;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding-left:16px; padding-right:16px;
+    height:40px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#ffffff;
+    background:rgba(8,26,49,.72);
+    border:1px solid var(--on-dark-line);
+    -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(8px);
+  }
+  .hero-status i{
+    width:8px; height:8px;
+    border-radius:50%;
+    background:#7fdc9c;
+    box-shadow:0 0 0 4px rgba(127,220,156,.2);
+  }
+  .hero-status.draft i{ background:var(--accent-300); box-shadow:0 0 0 4px rgba(127,169,220,.2); }
+  .hero-card{
+    position:absolute;
+    left:32px; bottom:32px;
+    z-index:4;
+    width:min(320px, calc(100% - 64px));
+    padding:20px 24px;
+    background:#ffffff;
+    color:var(--ink);
+    border-radius:var(--r);
+    box-shadow:0 24px 64px rgba(0,0,0,.28);
+  }
+  .hero-card small{
+    display:block;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:8px;
+  }
+  .hero-card strong{ display:block; font-size:20px; font-stretch:110%; line-height:1.2; margin-bottom:4px; }
+  .hero-card span{ display:block; font-size:16px; color:var(--muted); }
+  .hero-card .meta{
+    display:flex; gap:16px;
+    margin-top:12px; padding-top:12px;
+    border-top:1px solid var(--line);
+    font-family:var(--mono); font-size:12px; color:var(--ink);
   }
 
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(9, 14, 20, 0.82) 0%, rgba(12, 44, 80, 0.78) 55%, rgba(26, 83, 145, 0.62) 100%);
-    z-index: 1;
+  /* Sekvenca izgradnje (samo sa JS + motion) */
+  .motion .hero-visual:not(.built) .bp-bg{ animation:bpBg 4.4s var(--ease) forwards; }
+  .motion .hero-visual:not(.built) .bp-lines{ opacity:1; animation:bpLines 4.4s linear forwards; }
+  .motion .hero-visual:not(.built) .bp-lines .d{
+    stroke-dasharray:1;
+    stroke-dashoffset:1;
+    animation:draw 1.1s var(--ease) forwards;
+    animation-delay:calc(var(--i, 0) * 70ms + 200ms);
+  }
+  .motion .hero-visual:not(.built) .bp-lines text,
+  .motion .hero-visual:not(.built) .bp-lines .bubble{
+    opacity:0;
+    animation:fadeIn .4s ease forwards;
+    animation-delay:1.3s;
+  }
+  .motion .hero-visual:not(.built) .hero-photo{ animation:rise 1.6s cubic-bezier(.6,0,.3,1) 1.9s both; }
+  .motion .hero-visual:not(.built) .build-line{ animation:riseLine 1.6s cubic-bezier(.6,0,.3,1) 1.9s both; }
+  .motion .hero-visual:not(.built) .hero-card{ animation:cardIn .7s var(--ease) 3.6s both; }
+  .motion .hero-visual.built .bp-lines,
+  .motion .hero-visual.built .bp-bg,
+  .motion .hero-visual.built .build-line{ display:none; }
+  .motion .hero-visual.built .sheen{ opacity:1; }
+  .motion .hero-visual.built .sheen rect{ animation:sheen 10s ease-in-out 1s infinite; }
+
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes fadeIn{ to{ opacity:1; } }
+  @keyframes bpBg{ 0%,74%{ opacity:1; } 100%{ opacity:0; } }
+  @keyframes bpLines{ 0%,78%{ opacity:1; } 100%{ opacity:0; } }
+  @keyframes rise{
+    0%{ clip-path:inset(100% 0 0 0); }
+    28%{ clip-path:inset(66% 0 0 0); }
+    38%{ clip-path:inset(66% 0 0 0); }
+    62%{ clip-path:inset(33% 0 0 0); }
+    72%{ clip-path:inset(33% 0 0 0); }
+    100%{ clip-path:inset(0 0 0 0); }
+  }
+  @keyframes riseLine{
+    0%{ bottom:0; opacity:1; }
+    28%,38%{ bottom:34%; opacity:1; }
+    62%,72%{ bottom:67%; opacity:1; }
+    96%{ bottom:100%; opacity:1; }
+    100%{ bottom:100%; opacity:0; }
+  }
+  @keyframes cardIn{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:none; } }
+  @keyframes sheen{
+    0%{ transform:translateX(-700px); }
+    22%,100%{ transform:translateX(2100px); }
   }
 
-  .hero-inner {
-    position: relative;
-    z-index: 2;
-    padding-top: 120px;
-    padding-bottom: 120px;
-    max-width: 780px;
+  @media (max-width:991px){
+    .hero-grid{ grid-template-columns:1fr; min-height:0; }
+    .hero-copy{ padding-top:64px; padding-bottom:48px; padding-right:0; }
+    .hero-visual{
+      margin-right:-24px;
+      margin-left:-24px;
+      min-height:0;
+      aspect-ratio:4 / 3.4;
+    }
+    .hero-visual::after{ background:linear-gradient(0deg, rgba(8,26,49,.5) 0%, rgba(8,26,49,0) 30%); }
+  }
+  @media (max-width:768px){
+    .hero-visual{ margin-left:-20px; margin-right:-20px; aspect-ratio:1 / 1.02; }
+    .hero-sub{ font-size:16px; }
+    .hero-card{ left:20px; bottom:20px; width:calc(100% - 40px); padding:16px 20px; }
+    .hero-card .meta{ display:none; }
+    .hero-status{ top:16px; right:16px; }
+    .hero-actions{ gap:24px; }
+    .hero-actions .btn{ width:100%; }
+    .hero-proof{ margin-top:40px; }
   }
 
-  .hero h1 {
-    font-size: clamp(34px, 5.4vw, 58px);
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 22px;
-    letter-spacing: -0.01em;
+  /* Brojke ispod hero-a */
+  .stats{ background:var(--navy); color:#ffffff; border-top:1px solid var(--on-dark-line); }
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+  }
+  .stat{
+    padding-top:40px;
+    padding-bottom:40px;
+    padding-left:32px;
+    border-left:1px solid var(--on-dark-line);
+  }
+  .stat:first-child{ border-left:0; padding-left:0; }
+  .stat b{
+    display:block;
+    font-size:clamp(32px, 3.6vw, 48px);
+    font-weight:700;
+    font-stretch:118%;
+    letter-spacing:-.02em;
+    line-height:1;
+    margin-bottom:12px;
+    font-variant-numeric:tabular-nums;
+  }
+  .stat b sup{ font-size:.5em; color:var(--accent-300); vertical-align:top; margin-left:4px; }
+  .stat > span{ font-size:16px; color:var(--on-dark-muted); }
+  @media (max-width:900px){
+    .stats-grid{ grid-template-columns:repeat(2, 1fr); }
+    .stat{ padding-left:24px; padding-top:32px; padding-bottom:32px; }
+    .stat:nth-child(3){ border-left:0; padding-left:0; }
+    .stat:nth-child(n+3){ border-top:1px solid var(--on-dark-line); }
+  }
+  @media (max-width:480px){
+    .stats-grid{ grid-template-columns:minmax(0, 1fr); }
+    .stat, .stat:nth-child(3){ border-left:0; padding-left:0; padding-top:24px; padding-bottom:24px; }
+    .stat b{ margin-bottom:8px; }
+    .stat:nth-child(n+2){ border-top:1px solid var(--on-dark-line); }
   }
 
-  .hero-sub {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.86);
-    max-width: 58ch;
-    margin-bottom: 34px;
+  /* ---------- INVESTITORI (marquee) ---------- */
+  .clients{ padding-top:48px; padding-bottom:48px; border-bottom:1px solid var(--line-soft); overflow:hidden; }
+  .clients-label{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--faint);
+    margin-bottom:24px;
   }
-
-  @media (max-width: 768px) {
-    .hero { min-height: 560px; }
-    .hero-inner { padding-top: 90px; padding-bottom: 90px; }
+  .marquee{
+    display:flex;
+    width:max-content;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   }
-
-  /* ---------- BOL / INTRO ---------- */
-
-  .pain {
-    background: var(--bg-off);
-    border-bottom: 1px solid rgba(15, 20, 26, 0.06);
+  .marquee-track{ display:flex; align-items:center; flex-shrink:0; }
+  .marquee-track span{
+    display:inline-flex;
+    align-items:center;
+    gap:48px;
+    padding-right:48px;
+    font-size:24px;
+    font-weight:600;
+    font-stretch:120%;
+    letter-spacing:-.01em;
+    color:rgba(14,22,33,.42);
+    white-space:nowrap;
+    transition:color .3s;
   }
-
-  .pain .wrap {
-    padding-top: 56px;
-    padding-bottom: 56px;
+  .marquee-track span::after{
+    content:"";
+    width:8px; height:8px;
+    background:var(--accent-200);
+    transform:rotate(45deg);
   }
+  .marquee-track span:hover{ color:var(--accent); }
+  .motion .marquee{ animation:marquee 60s linear infinite; }
+  .motion .marquee:hover{ animation-play-state:paused; }
+  @keyframes marquee{ to{ transform:translateX(-50%); } }
+  .clients-wrap{ overflow:hidden; }
+  html:not(.motion) .clients-wrap{ overflow-x:auto; }
 
-  .pain p {
-    font-size: 18px;
-    max-width: 68ch;
-    color: var(--text);
-    font-weight: 400;
+  /* ---------- KOMPANIJA ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
+    gap:96px;
+    align-items:center;
   }
-
-  /* ---------- GENERIC SECTION SPACING ---------- */
-
-  .section-pad {
-    padding-top: 96px;
-    padding-bottom: 96px;
+  .about-copy .tag{ margin-bottom:20px; }
+  .about-copy h2{ font-size:clamp(32px, 3.4vw, 48px); margin-bottom:32px; }
+  .about-copy p{ font-size:16px; margin-bottom:20px; max-width:60ch; }
+  .about-copy p.lead{ font-size:20px; color:var(--ink); line-height:1.5; }
+  .motto{
+    margin-top:40px;
+    padding-left:24px;
+    border-left:2px solid var(--accent);
   }
+  .motto q{
+    display:block;
+    font-size:24px;
+    font-weight:600;
+    font-stretch:110%;
+    line-height:1.3;
+    color:var(--ink);
+    quotes:"„" "“";
+    margin-bottom:8px;
+  }
+  .motto cite{ font-style:normal; font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); }
 
-  @media (max-width: 768px) {
-    .section-pad { padding-top: 64px; padding-bottom: 64px; }
+  .collage{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(12, 1fr);
+    grid-template-rows:repeat(12, 48px);
+  }
+  .collage figure{ position:relative; overflow:hidden; border-radius:var(--r); }
+  .collage img{ width:100%; height:100%; object-fit:cover; }
+  .c1{ grid-column:1 / 9; grid-row:1 / 11; }
+  .c2{ grid-column:7 / 13; grid-row:6 / 13; box-shadow:0 0 0 8px #ffffff; }
+  .collage figcaption{
+    position:absolute;
+    left:12px; bottom:12px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.06em;
+    color:#ffffff;
+    background:rgba(8,26,49,.72);
+    padding:4px 8px;
+  }
+  .since{
+    position:absolute;
+    top:32px; right:0;
+    width:176px;
+    padding:20px;
+    background:var(--navy);
+    color:#ffffff;
+    border-radius:var(--r);
+  }
+  .since b{ display:block; font-size:48px; font-stretch:120%; line-height:1; letter-spacing:-.03em; margin-bottom:8px; }
+  .since span{ font-size:16px; line-height:1.4; color:var(--on-dark-muted); display:block; }
+  @media (max-width:991px){
+    .about-grid{ grid-template-columns:1fr; gap:64px; }
+  }
+  @media (max-width:600px){
+    .collage{ grid-template-rows:repeat(12, 32px); }
+    .since{ width:144px; padding:16px; top:16px; }
+    .since b{ font-size:32px; }
+    .motto q{ font-size:20px; }
   }
 
   /* ---------- USLUGE ---------- */
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+  .svc-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+  }
+  .svc{
+    position:relative;
+    padding:40px 32px 48px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:#ffffff;
+    transition:background .35s var(--ease);
+    overflow:hidden;
+  }
+  .svc::before{
+    content:"";
+    position:absolute;
+    left:0; top:0;
+    width:100%; height:2px;
+    background:var(--accent);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .5s var(--ease);
+  }
+  .svc:hover{ background:var(--paper); }
+  .svc:hover::before{ transform:scaleX(1); }
+  .svc-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:48px;
+  }
+  .svc-num{ font-family:var(--mono); font-size:12px; color:var(--faint); letter-spacing:.1em; }
+  .svc svg{ width:40px; height:40px; stroke:var(--accent); fill:none; stroke-width:1.4; stroke-linecap:square; }
+  .svc h3{ font-size:24px; margin-bottom:12px; }
+  .svc p{ font-size:16px; }
+  @media (max-width:991px){ .svc-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:600px){
+    .svc-grid{ grid-template-columns:1fr; }
+    .svc{ padding:32px 24px 40px; }
+    .svc-top{ margin-bottom:32px; }
   }
 
-  @media (max-width: 991px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .svc-band{
+    position:relative;
+    margin-top:64px;
+    border-radius:var(--r);
+    overflow:hidden;
+    min-height:440px;
+    display:flex;
+    align-items:flex-end;
+  }
+  .svc-band img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .svc-band::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(90deg, rgba(8,26,49,.88) 0%, rgba(8,26,49,.55) 45%, rgba(8,26,49,0) 80%);
+  }
+  .svc-band-in{ position:relative; z-index:1; padding:48px; max-width:600px; }
+  .svc-band .tag{ color:var(--accent-300); margin-bottom:16px; }
+  .svc-band h3{ color:#ffffff; font-size:clamp(24px, 2.8vw, 40px); margin-bottom:16px; }
+  .svc-band p{ color:var(--on-dark-muted); font-size:16px; }
+  @media (max-width:768px){
+    .svc-band{ min-height:480px; }
+    .svc-band::after{ background:linear-gradient(0deg, rgba(8,26,49,.92) 0%, rgba(8,26,49,.6) 55%, rgba(8,26,49,.1) 100%); }
+    .svc-band-in{ padding:24px; }
   }
 
-  @media (max-width: 560px) {
-    .services-grid { grid-template-columns: 1fr; }
+  /* ---------- PROCES ---------- */
+  .proc-grid{
+    display:grid;
+    grid-template-columns:minmax(0, 5fr) minmax(0, 7fr);
+    gap:96px;
+    align-items:start;
+  }
+  .proc-side{ position:sticky; top:128px; }
+  .proc-side .head{ margin-bottom:40px; }
+  .proc-key{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:24px;
+    background:#ffffff;
+    border:1px solid var(--line);
+    border-radius:var(--r);
+  }
+  .proc-key svg{ width:48px; height:48px; flex-shrink:0; stroke:var(--accent); fill:none; stroke-width:1.4; }
+  .proc-key b{ display:block; font-size:20px; font-stretch:110%; line-height:1.25; }
+  .proc-key span{ font-size:16px; color:var(--muted); }
+  .steps{ position:relative; }
+  .steps-list{ list-style:none; }
+  .steps::before, .steps-fill{
+    content:"";
+    position:absolute;
+    left:23px; top:24px; bottom:24px;
+    width:2px;
+    background:var(--line);
+  }
+  .steps-fill{
+    background:var(--accent);
+    bottom:auto;
+    height:0;
+    transition:height .15s linear;
+  }
+  html:not(.js) .steps-fill{ display:none; }
+  .step{
+    position:relative;
+    display:grid;
+    grid-template-columns:48px 1fr;
+    gap:32px;
+    padding-bottom:64px;
+  }
+  .step:last-child{ padding-bottom:0; }
+  .step-dot{
+    position:relative;
+    z-index:1;
+    width:48px; height:48px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:500;
+    color:var(--accent);
+    background:#ffffff;
+    border:2px solid var(--line);
+    border-radius:50%;
+    transition:background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+  }
+  .step.on .step-dot, html:not(.js) .step-dot{ background:var(--accent); border-color:var(--accent); color:#ffffff; }
+  .step h3{ font-size:28px; margin-bottom:12px; padding-top:8px; }
+  .step p{ font-size:16px; max-width:52ch; }
+  .step .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  .step .chips span{
+    font-family:var(--mono);
+    font-size:12px;
+    padding:4px 12px;
+    color:var(--accent);
+    background:var(--accent-soft);
+    border-radius:999px;
+  }
+  @media (max-width:991px){
+    .proc-grid{ grid-template-columns:1fr; gap:48px; }
+    .proc-side{ position:static; }
+  }
+  @media (max-width:600px){
+    .step{ gap:20px; padding-bottom:48px; }
+    .step h3{ font-size:24px; }
   }
 
-  .service-card {
-    border: 1px solid rgba(15, 20, 26, 0.09);
-    border-radius: var(--radius-card);
-    padding: 32px 26px;
-    background: #ffffff;
-    transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  /* ---------- GRADILIŠTE KROZ VREME ---------- */
+  .tl-grid{
+    display:grid;
+    grid-template-columns:minmax(0, 8fr) minmax(0, 4fr);
+    gap:48px;
+    align-items:stretch;
+  }
+  .scrub{ position:relative; }
+  .frames{
+    position:relative;
+    aspect-ratio:16 / 10;
+    overflow:hidden;
+    border-radius:var(--r);
+    background:var(--navy-2);
+  }
+  .frames img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+  }
+  .frame-label{
+    position:absolute;
+    left:20px; top:20px;
+    z-index:5;
+    display:flex; gap:12px; align-items:center;
+    padding:8px 16px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    background:rgba(8,26,49,.78);
+    color:#ffffff;
+    -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(8px);
+  }
+  .frame-label b{ color:var(--accent-300); font-weight:500; }
+  .scrub-ctrl{ margin-top:32px; display:none; }
+  .js .scrub-ctrl{ display:block; }
+  .scrub-track{ position:relative; height:48px; }
+  .scrub-rail{
+    position:absolute;
+    left:0; right:0; top:23px;
+    height:2px;
+    background:var(--on-dark-line);
+  }
+  .scrub-fill{
+    position:absolute;
+    left:0; top:23px;
+    height:2px;
+    width:0;
+    background:var(--accent-300);
+  }
+  .scrub-knob{
+    position:absolute;
+    top:12px;
+    width:24px; height:24px;
+    margin-left:-12px;
+    left:0;
+    background:#ffffff;
+    border-radius:50%;
+    box-shadow:0 0 0 6px rgba(127,169,220,.25);
+    pointer-events:none;
+  }
+  .scrub input[type=range]{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    opacity:0;
+    cursor:grab;
+    margin:0;
+  }
+  .scrub input[type=range]:active{ cursor:grabbing; }
+  .scrub input[type=range]:focus-visible + .scrub-knob{ outline:2px solid #ffffff; outline-offset:4px; }
+  .scrub-stops{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    margin-top:12px;
+  }
+  .scrub-stops button{
+    text-align:left;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.04em;
+    color:var(--on-dark-faint);
+    padding-top:4px;
+    padding-right:8px;
+    transition:color .3s;
+  }
+  .scrub-stops button b{ display:block; color:inherit; font-weight:500; }
+  .scrub-stops button:nth-child(5){ text-align:right; padding-right:0; }
+  .scrub-stops button.on{ color:#ffffff; }
+  .scrub-stops button.on b{ color:var(--accent-300); }
+  .tl-facts{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:32px;
+    padding:32px;
+    border:1px solid var(--on-dark-line);
+    border-radius:var(--r);
+  }
+  .tl-facts dl{ display:grid; gap:20px; }
+  .tl-facts dt{ font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--on-dark-faint); margin-bottom:4px; }
+  .tl-facts dd{ font-size:20px; font-weight:600; font-stretch:108%; color:#ffffff; line-height:1.3; }
+  .tl-facts p{ font-size:16px; }
+  @media (max-width:991px){ .tl-grid{ grid-template-columns:1fr; } }
+  @media (max-width:600px){
+    .scrub-stops button{ font-size:12px; }
+    .scrub-stops button span{ display:none; }
+    .frames{ aspect-ratio:4 / 3; }
+    .tl-facts{ padding:24px; }
   }
 
-  .service-card:hover {
-    box-shadow: 0 18px 40px rgba(15, 20, 26, 0.08);
-    transform: translateY(-4px);
-    border-color: rgba(15, 20, 26, 0.05);
+  /* ---------- REFERENCE ---------- */
+  .filters{
+    display:flex;
+    gap:8px;
+    margin-bottom:40px;
+    overflow-x:auto;
+    padding-bottom:8px;
+    scrollbar-width:none;
+  }
+  .filters::-webkit-scrollbar{ display:none; }
+  .chip{
+    flex-shrink:0;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    height:40px;
+    padding-left:16px; padding-right:16px;
+    font-size:16px;
+    font-weight:500;
+    color:var(--ink);
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:#ffffff;
+    transition:background .2s, color .2s, border-color .2s;
+  }
+  .chip small{ font-family:var(--mono); font-size:12px; color:var(--faint); }
+  .chip:hover{ border-color:var(--accent); }
+  .chip[aria-pressed="true"]{ background:var(--navy); color:#ffffff; border-color:var(--navy); }
+  .chip[aria-pressed="true"] small{ color:var(--accent-300); }
+
+  .ref-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:32px 24px;
+  }
+  .ref{ display:flex; flex-direction:column; }
+  .ref-img{
+    position:relative;
+    aspect-ratio:4 / 3;
+    overflow:hidden;
+    border-radius:var(--r);
+    background:var(--paper);
+    margin-bottom:20px;
+  }
+  .ref-img img{ width:100%; height:100%; object-fit:cover; transition:transform .9s var(--ease); }
+  .ref:hover .ref-img img{ transform:scale(1.05); }
+  .ref-img .area{
+    position:absolute;
+    left:12px; top:12px;
+    padding:4px 12px;
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:500;
+    color:var(--ink);
+    background:#ffffff;
+    border-radius:999px;
+  }
+  .ref-desc{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:48px 20px 20px;
+    font-size:16px;
+    line-height:1.45;
+    color:#ffffff;
+    background:linear-gradient(0deg, rgba(8,26,49,.92), rgba(8,26,49,0));
+    transform:translateY(101%);
+    transition:transform .5s var(--ease);
+  }
+  .ref:hover .ref-desc, .ref:focus-within .ref-desc{ transform:none; }
+  @media (hover:none){ .ref-desc{ display:none; } }
+  .ref-meta{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--faint);
+    margin-bottom:8px;
+  }
+  .ref h3{ font-size:24px; line-height:1.2; margin-bottom:4px; }
+  .ref .city{ font-size:16px; color:var(--muted); }
+  .ref .note{ display:none; font-size:16px; color:var(--muted); margin-top:8px; }
+  @media (hover:none){ .ref .note{ display:block; } }
+  .ref[hidden]{ display:none; }
+  .ref.hide{ display:none; }
+  .ref.feat{ grid-column:span 2; grid-row:span 2; }
+  .ref.feat .ref-img{ aspect-ratio:auto; flex:1; min-height:360px; }
+  .ref.feat h3{ font-size:32px; }
+  .ref-more{ margin-top:56px; text-align:center; }
+  .js .ref.extra{ display:none; }
+  .js .ref-grid.all .ref.extra{ display:flex; }
+  .js .ref-grid.filtered .ref.extra{ display:flex; }
+  .js .ref-grid .ref.hide{ display:none; }
+  .ref-grid.filtered .ref.feat{ grid-column:auto; grid-row:auto; }
+  .ref-grid.filtered .ref.feat .ref-img{ aspect-ratio:4 / 3; min-height:0; flex:none; }
+  .ref-grid.filtered .ref.feat h3{ font-size:24px; }
+  html:not(.js) .ref-more{ display:none; }
+  @media (max-width:991px){
+    .ref-grid{ grid-template-columns:repeat(2, 1fr); }
+    .ref.feat{ grid-column:span 2; grid-row:auto; }
+    .ref.feat .ref-img{ aspect-ratio:16 / 10; min-height:0; flex:none; }
+  }
+  @media (max-width:600px){
+    .ref-grid{ grid-template-columns:1fr; gap:40px; }
+    .ref.feat{ grid-column:auto; }
+    .ref.feat h3{ font-size:24px; }
   }
 
-  .icon-badge {
-    width: 52px;
-    height: 52px;
-    border-radius: 10px;
-    background: var(--accent-soft);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 22px;
+  /* ---------- ZAŠTO ---------- */
+  .bento{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:24px;
+  }
+  .b{
+    position:relative;
+    padding:32px;
+    border-radius:var(--r);
+    background:#ffffff;
+    border:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:32px;
+    min-height:280px;
+    overflow:hidden;
+  }
+  .b-1{ grid-column:span 3; grid-row:span 2; background:var(--navy); border-color:var(--navy); }
+  .b-2, .b-3{ grid-column:span 3; }
+  .b-4, .b-5, .b-6{ grid-column:span 2; }
+  .b .big{
+    font-size:clamp(40px, 4.4vw, 64px);
+    font-weight:700;
+    font-stretch:120%;
+    line-height:.95;
+    letter-spacing:-.03em;
+    color:var(--accent);
+  }
+  .b-1 .big{ color:#ffffff; font-size:clamp(96px, 12vw, 176px); display:flex; align-items:baseline; gap:16px; }
+  .b-1 .big small{ font-size:clamp(32px, 3.2vw, 48px); letter-spacing:-.02em; color:var(--accent-300); }
+  .b h3{ font-size:24px; margin-bottom:8px; }
+  .b p{ font-size:16px; }
+  .b-1 h3{ color:#ffffff; font-size:28px; }
+  .b-1 p{ color:var(--on-dark-muted); }
+  .b .src{
+    display:inline-block;
+    margin-top:16px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--faint);
+  }
+  .b-1 .src{ color:var(--accent-300); }
+  .b-1 .gauge{
+    position:absolute;
+    right:-64px; top:-64px;
+    width:320px; height:320px;
+    opacity:.5;
+  }
+  .gauge circle{ fill:none; stroke-width:2; }
+  .gauge .g0{ stroke:var(--on-dark-line); }
+  .gauge .g1{ stroke:var(--accent-300); stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset 2s var(--ease); transform:rotate(-90deg); transform-origin:center; }
+  .b-1.in .gauge .g1, html:not(.js) .gauge .g1{ stroke-dashoffset:.5; }
+  @media (max-width:991px){
+    .bento{ grid-template-columns:repeat(2, 1fr); }
+    .b-1{ grid-column:span 2; grid-row:auto; }
+    .b-2, .b-3, .b-4, .b-5, .b-6{ grid-column:span 1; }
+  }
+  @media (max-width:600px){
+    .bento{ grid-template-columns:1fr; }
+    .b-1, .b-2, .b-3, .b-4, .b-5, .b-6{ grid-column:auto; }
+    .b{ min-height:0; padding:24px; }
   }
 
-  .icon-badge svg {
-    width: 26px;
-    height: 26px;
-    stroke: var(--accent);
-    fill: none;
-    stroke-width: 1.6;
+  /* ---------- MAPA ---------- */
+  .map-grid{
+    display:grid;
+    grid-template-columns:minmax(0, 5fr) minmax(0, 7fr);
+    gap:96px;
+    align-items:center;
   }
-
-  .service-card h3 {
-    font-size: 19px;
-    font-weight: 600;
-    margin-bottom: 10px;
+  .map-wrap{ position:relative; max-width:440px; margin-left:auto; margin-right:auto; width:100%; }
+  .map-svg{ width:100%; height:auto; overflow:visible; }
+  .map-svg .land{ fill:#e6ecf3; }
+  .map-svg .edge{ fill:none; stroke:#b9c9dc; stroke-width:3; stroke-linejoin:round; }
+  .pin circle.dot{ fill:var(--accent); stroke:#ffffff; stroke-width:2; transition:r .3s var(--ease); }
+  .pin circle.ring{ fill:none; stroke:var(--accent); stroke-width:1.5; opacity:0; transform-box:fill-box; transform-origin:center; }
+  .motion .pin circle.ring{ animation:ping 2.8s ease-out infinite; animation-delay:var(--dl, 0s); }
+  .pin text{
+    font-family:var(--mono);
+    font-size:12px;
+    fill:var(--ink);
+    opacity:.72;
+    transition:opacity .3s;
+    paint-order:stroke;
+    stroke:#f3f5f8;
+    stroke-width:4;
   }
-
-  .service-card p { font-size: 15px; }
-
-  /* ---------- REFERENTNI PROJEKTI ---------- */
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+  .pin.hq circle.dot{ fill:var(--navy); }
+  .pin.on circle.dot{ r:9; }
+  .pin.on text{ opacity:1; font-weight:500; }
+  @keyframes ping{
+    0%{ transform:scale(.6); opacity:.9; }
+    80%,100%{ transform:scale(2.8); opacity:0; }
   }
-
-  @media (max-width: 991px) {
-    .projects-grid { grid-template-columns: 1fr; }
+  .map-total{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+    padding-bottom:32px;
+    border-bottom:1px solid var(--line);
   }
-
-  .project-card {
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    border: 1px solid rgba(15, 20, 26, 0.08);
-    background: #ffffff;
-    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  .map-total b{ font-size:clamp(40px, 4.4vw, 64px); font-stretch:120%; line-height:1; letter-spacing:-.03em; color:var(--accent); font-variant-numeric:tabular-nums; }
+  .map-total > span{ font-size:16px; color:var(--muted); max-width:28ch; }
+  .cities{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:0 32px; }
+  .cities button{
+    display:grid;
+    grid-template-columns:1fr;
+    width:100%;
+    text-align:left;
+    padding-top:16px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--line);
+    transition:padding .3s var(--ease);
   }
-
-  .project-card:hover {
-    box-shadow: 0 20px 44px rgba(15, 20, 26, 0.1);
-    transform: translateY(-4px);
+  .cities b{ font-size:20px; font-stretch:110%; font-weight:600; display:flex; align-items:center; gap:12px; }
+  .cities b::before{ content:""; width:8px; height:8px; border-radius:50%; background:var(--accent-200); transition:background .3s; }
+  .cities span{ font-size:16px; color:var(--muted); padding-left:20px; }
+  .cities button:hover, .cities button.on{ padding-left:8px; }
+  .cities button.on b::before, .cities button:hover b::before{ background:var(--accent); }
+  @media (max-width:991px){
+    .map-grid{ grid-template-columns:1fr; gap:48px; }
+    .map-wrap{ max-width:360px; }
   }
+  @media (max-width:600px){ .cities{ grid-template-columns:1fr; } }
 
-  .project-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
+  /* ---------- ISTORIJA ---------- */
+  .hist-nav{ display:flex; gap:8px; }
+  .hist-nav button{
+    width:56px; height:56px;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line);
+    background:#ffffff;
+    transition:background .2s, border-color .2s;
   }
-
-  .project-info {
-    padding: 22px 22px 26px;
+  .hist-nav button:hover{ background:var(--navy); border-color:var(--navy); }
+  .hist-nav button:hover svg{ stroke:#ffffff; }
+  .hist-nav svg{ width:20px; height:20px; stroke:var(--ink); fill:none; stroke-width:1.8; }
+  html:not(.js) .hist-nav{ display:none; }
+  .hist{
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:minmax(280px, 1fr);
+    gap:0;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    list-style:none;
+    border-top:2px solid var(--ink);
+    margin-left:-24px;
+    margin-right:-24px;
+    padding-left:24px;
+    padding-right:24px;
+    scroll-padding-left:24px;
   }
-
-  .project-info .tag {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 8px;
-    display: block;
+  .hist::-webkit-scrollbar{ display:none; }
+  .hist li{
+    scroll-snap-align:start;
+    position:relative;
+    padding-top:40px;
+    padding-right:40px;
+    min-width:0;
   }
-
-  .project-info h3 {
-    font-size: 17px;
-    font-weight: 600;
-    margin-bottom: 6px;
+  .hist li::before{
+    content:"";
+    position:absolute;
+    left:0; top:-7px;
+    width:12px; height:12px;
+    background:var(--paper);
+    border:2px solid var(--ink);
+    border-radius:50%;
   }
-
-  .project-info p { font-size: 14.5px; margin: 0; }
+  .hist li.big::before{ background:var(--accent); border-color:var(--accent); }
+  .hist .yr{
+    display:block;
+    font-size:48px;
+    font-weight:700;
+    font-stretch:120%;
+    letter-spacing:-.03em;
+    line-height:1;
+    margin-bottom:16px;
+    color:var(--ink);
+  }
+  .hist li.big .yr{ color:var(--accent); }
+  .hist h3{ font-size:20px; line-height:1.25; margin-bottom:8px; }
+  .hist p{ font-size:16px; }
+  @media (max-width:768px){
+    .hist{ grid-auto-columns:minmax(260px, 80%); margin-left:-20px; margin-right:-20px; padding-left:20px; padding-right:20px; scroll-padding-left:20px; }
+    .hist .yr{ font-size:40px; }
+  }
 
   /* ---------- SERTIFIKATI ---------- */
+  .cert-sec{ overflow:hidden; }
+  .cert-sec::before{
+    content:"";
+    position:absolute;
+    right:-240px; top:-240px;
+    width:720px; height:720px;
+    background:radial-gradient(circle, rgba(26,83,145,.5) 0%, rgba(26,83,145,0) 65%);
+    pointer-events:none;
+  }
+  .cert-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+  }
+  .cert{
+    position:relative;
+    padding:32px 24px;
+    border:1px solid var(--on-dark-line);
+    border-radius:var(--r);
+    background:rgba(255,255,255,.03);
+    display:flex;
+    flex-direction:column;
+    min-height:320px;
+    transition:border-color .3s, background .3s;
+  }
+  .cert:hover{ border-color:rgba(127,169,220,.5); background:rgba(255,255,255,.05); }
+  .cert-seal{
+    width:64px; height:64px;
+    margin-bottom:32px;
+  }
+  .cert-seal circle{ fill:none; stroke:var(--accent-300); stroke-width:1.4; }
+  .cert-seal path{ fill:none; stroke:#ffffff; stroke-width:1.6; }
+  .cert-seal text{ font-family:var(--mono); font-size:8px; fill:var(--accent-300); letter-spacing:.2em; }
+  .cert h3{ font-size:28px; font-stretch:116%; margin-bottom:8px; }
+  .cert p{ font-size:16px; margin-bottom:24px; }
+  .cert .no{
+    margin-top:auto;
+    padding-top:16px;
+    border-top:1px solid var(--on-dark-line);
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.06em;
+    color:var(--on-dark-faint);
+  }
+  .cert .no b{ color:#ffffff; font-weight:500; }
+  @media (max-width:991px){ .cert-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:600px){ .cert-grid{ grid-template-columns:1fr; } .cert{ min-height:0; } }
 
-  .certs-band {
-    background: var(--accent-darker);
-    color: #ffffff;
-    position: relative;
-    overflow: hidden;
+  /* ---------- AKTUELNO ---------- */
+  .news-grid{
+    display:grid;
+    grid-template-columns:minmax(0, 7fr) minmax(0, 5fr);
+    gap:64px;
+  }
+  .feature{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    border-radius:var(--r);
+    overflow:hidden;
+    background:var(--navy);
+    color:#ffffff;
+  }
+  .feature-img{ position:relative; aspect-ratio:16 / 9; overflow:hidden; }
+  .feature-img img{ width:100%; height:100%; object-fit:cover; transition:transform 1.2s var(--ease); }
+  .feature:hover .feature-img img{ transform:scale(1.04); }
+  .badge-live{
+    position:absolute;
+    left:20px; top:20px;
+    display:inline-flex; align-items:center; gap:8px;
+    padding:8px 16px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    background:#ffffff;
+    color:var(--ink);
+  }
+  .badge-live i{ width:8px; height:8px; border-radius:50%; background:#2f9e5b; }
+  .feature-body{ padding:32px; }
+  .feature-body h3{ color:#ffffff; font-size:clamp(24px, 2.6vw, 36px); margin-bottom:12px; }
+  .feature-body p{ font-size:16px; color:var(--on-dark-muted); max-width:60ch; }
+  .feature-facts{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+    margin-top:32px;
+    padding-top:24px;
+    border-top:1px solid var(--on-dark-line);
+  }
+  .feature-facts b{ display:block; font-size:24px; font-stretch:116%; line-height:1.1; }
+  .feature-facts span{ font-family:var(--mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--on-dark-faint); }
+  .news-list{ list-style:none; border-top:1px solid var(--line); }
+  .news-list a{
+    display:grid;
+    grid-template-columns:1fr 24px;
+    gap:16px;
+    align-items:center;
+    padding-top:24px;
+    padding-bottom:24px;
+    border-bottom:1px solid var(--line);
+  }
+  .news-list time{ display:block; font-family:var(--mono); font-size:12px; letter-spacing:.08em; color:var(--accent); margin-bottom:8px; }
+  .news-list strong{ display:block; font-size:20px; font-stretch:108%; line-height:1.3; font-weight:600; transition:color .2s; }
+  .news-list svg{ width:24px; height:24px; stroke:var(--ink); fill:none; stroke-width:1.6; transition:transform .3s var(--ease), stroke .2s; }
+  .news-list a:hover strong{ color:var(--accent); }
+  .news-list a:hover svg{ transform:translate(4px, -4px); stroke:var(--accent); }
+  .news-side h3{ font-size:28px; margin-bottom:24px; }
+  @media (max-width:991px){ .news-grid{ grid-template-columns:1fr; gap:48px; } }
+  @media (max-width:600px){
+    .feature-facts{ grid-template-columns:repeat(3, 1fr); gap:12px; }
+    .feature-facts b{ font-size:20px; }
+    .feature-body{ padding:24px; }
   }
 
-  .certs-band::before {
-    content: "";
-    position: absolute;
-    top: -140px;
-    right: -100px;
-    width: 420px;
-    height: 420px;
-    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-    pointer-events: none;
+  /* ---------- FAQ ---------- */
+  .faq-grid{
+    display:grid;
+    grid-template-columns:minmax(0, 4fr) minmax(0, 8fr);
+    gap:96px;
+    align-items:start;
+  }
+  .faq-side{ position:sticky; top:128px; }
+  .faq-side .head{ margin-bottom:32px; }
+  .faq details{ border-bottom:1px solid var(--line); }
+  .faq details:first-child{ border-top:1px solid var(--line); }
+  .faq summary{
+    list-style:none;
+    cursor:pointer;
+    display:grid;
+    grid-template-columns:1fr 40px;
+    gap:24px;
+    align-items:center;
+    padding-top:28px;
+    padding-bottom:28px;
+    font-size:20px;
+    font-weight:600;
+    font-stretch:108%;
+    line-height:1.35;
+  }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary i{
+    position:relative;
+    width:40px; height:40px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    transition:background .3s, border-color .3s, transform .4s var(--ease);
+  }
+  .faq summary i::before, .faq summary i::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    margin:auto;
+    width:12px; height:2px;
+    background:var(--ink);
+    transition:transform .4s var(--ease), background .3s;
+  }
+  .faq summary i::after{ transform:rotate(90deg); }
+  .faq details[open] summary i{ background:var(--accent); border-color:var(--accent); transform:rotate(180deg); }
+  .faq details[open] summary i::before, .faq details[open] summary i::after{ background:#ffffff; }
+  .faq details[open] summary i::after{ transform:rotate(0); }
+  .faq summary:hover{ color:var(--accent); }
+  .faq .ans{ padding-bottom:32px; padding-right:64px; }
+  .faq .ans p{ font-size:16px; max-width:64ch; }
+  .faq .ans p + p{ margin-top:12px; }
+  @media (max-width:991px){
+    .faq-grid{ grid-template-columns:1fr; gap:48px; }
+    .faq-side{ position:static; }
+  }
+  @media (max-width:600px){
+    .faq summary{ font-size:16px; grid-template-columns:1fr 32px; gap:16px; }
+    .faq summary i{ width:32px; height:32px; }
+    .faq .ans{ padding-right:0; }
   }
 
-  .certs-band .section-head h2,
-  .certs-band .eyebrow { color: #ffffff; }
-  .certs-band .section-head p { color: rgba(255, 255, 255, 0.7); }
-
-  .certs-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 18px;
-    position: relative;
-    z-index: 1;
+  /* ---------- KONTAKT ---------- */
+  .contact{ overflow:hidden; }
+  .contact::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(127,169,220,.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(127,169,220,.06) 1px, transparent 1px);
+    background-size:48px 48px;
+    -webkit-mask-image:linear-gradient(90deg, #000 0%, transparent 60%);
+    mask-image:linear-gradient(90deg, #000 0%, transparent 60%);
+    pointer-events:none;
   }
-
-  @media (max-width: 991px) {
-    .certs-grid { grid-template-columns: repeat(3, 1fr); }
+  .contact-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns:minmax(0, 5fr) minmax(0, 7fr);
+    gap:96px;
+    align-items:start;
   }
-
-  @media (max-width: 560px) {
-    .certs-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact h2{ font-size:clamp(32px, 4vw, 56px); margin-bottom:24px; }
+  .contact .intro{ font-size:20px; margin-bottom:48px; max-width:40ch; }
+  .cinfo{ list-style:none; display:grid; gap:0; border-top:1px solid var(--on-dark-line); }
+  .cinfo li{
+    display:grid;
+    grid-template-columns:40px 1fr;
+    gap:16px;
+    align-items:start;
+    padding-top:20px;
+    padding-bottom:20px;
+    border-bottom:1px solid var(--on-dark-line);
   }
+  .cinfo svg{ width:24px; height:24px; stroke:var(--accent-300); fill:none; stroke-width:1.6; margin-top:4px; }
+  .cinfo small{ display:block; font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--on-dark-faint); margin-bottom:4px; }
+  .cinfo a, .cinfo span{ font-size:20px; font-weight:500; color:#ffffff; }
+  .cinfo a:hover{ color:var(--accent-300); }
+  .cinfo em{ display:block; font-style:normal; font-size:16px; color:var(--on-dark-muted); }
+  .contact .link{ margin-top:32px; }
 
-  .cert-badge {
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: var(--radius-card);
-    padding: 26px 18px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.03);
+  .form{
+    padding:48px;
+    background:#ffffff;
+    color:var(--ink);
+    border-radius:var(--r);
   }
-
-  .cert-badge svg {
-    width: 30px;
-    height: 30px;
-    stroke: #ffffff;
-    fill: none;
-    stroke-width: 1.5;
-    margin: 0 auto 14px;
-    display: block;
+  .form h3{ font-size:28px; margin-bottom:8px; color:var(--ink); }
+  .form > p{ font-size:16px; margin-bottom:32px; color:var(--muted); }
+  .frow{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px; }
+  .field{ display:flex; flex-direction:column; gap:8px; }
+  .field.full{ grid-column:1 / -1; }
+  .field label, .field legend{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--muted);
   }
-
-  .cert-badge .cert-title {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    margin-bottom: 6px;
+  .field input, .field textarea{
+    width:100%;
+    min-height:52px;
+    padding:12px 16px;
+    font:inherit;
+    font-size:16px;
+    color:var(--ink);
+    background:var(--paper);
+    border:1px solid transparent;
+    border-bottom:1px solid var(--line);
+    border-radius:0;
+    transition:border-color .2s, background .2s;
   }
-
-  .cert-badge .cert-desc {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.62);
-    line-height: 1.4;
+  .field textarea{ min-height:128px; resize:vertical; }
+  .field input:focus, .field textarea:focus{ outline:none; background:#ffffff; border-color:var(--accent); }
+  .field input.err, .field textarea.err{ border-color:#b3261e; }
+  fieldset.field{ border:0; }
+  .types{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+  .types label{ position:relative; font-family:var(--sans); font-size:16px; letter-spacing:0; text-transform:none; color:var(--ink); }
+  .types input{ position:absolute; opacity:0; pointer-events:none; }
+  .types span{
+    display:inline-flex;
+    align-items:center;
+    height:40px;
+    padding-left:16px; padding-right:16px;
+    font-size:16px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    cursor:pointer;
+    transition:background .2s, color .2s, border-color .2s;
   }
-
-  /* ---------- O NAMA ---------- */
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 64px;
-    align-items: center;
+  .types input:checked + span{ background:var(--accent); color:#ffffff; border-color:var(--accent); }
+  .types input:focus-visible + span{ outline:2px solid var(--accent); outline-offset:2px; }
+  .form .btn{ width:100%; margin-top:12px; }
+  .form .form-note{ font-size:16px; margin-top:16px; color:var(--muted); min-height:24px; }
+  .form .form-note.ok{ color:#1f7a45; }
+  .form .form-note.bad{ color:#b3261e; }
+  @media (max-width:991px){ .contact-grid{ grid-template-columns:1fr; gap:64px; } }
+  @media (max-width:600px){
+    .form{ padding:24px; }
+    .frow{ grid-template-columns:1fr; gap:20px; }
+    .contact .intro{ font-size:16px; }
+    .cinfo a, .cinfo span{ font-size:16px; }
   }
-
-  @media (max-width: 900px) {
-    .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  }
-
-  .about-text h2 {
-    font-size: clamp(28px, 3.4vw, 38px);
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-
-  .about-text p { font-size: 16px; margin-bottom: 16px; max-width: 58ch; }
-
-  .about-facts {
-    display: flex;
-    gap: 32px;
-    margin-top: 28px;
-    flex-wrap: wrap;
-  }
-
-  .about-facts .fact strong {
-    display: block;
-    font-family: 'Poppins', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  .about-facts .fact span {
-    font-size: 13.5px;
-    color: var(--text-faint);
-  }
-
-  .about-media {
-    border-radius: var(--radius-card);
-    background: repeating-linear-gradient(135deg, #e7ebef 0px, #e7ebef 14px, #dfe4e9 14px, #dfe4e9 28px);
-    height: 420px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-faint);
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 0.04em;
-    text-align: center;
-    border: 1px solid rgba(15, 20, 26, 0.08);
-  }
-
-  @media (max-width: 900px) {
-    .about-media { height: 280px; }
-  }
-
-  /* ---------- UTISCI / STATS ---------- */
-
-  .stats-section {
-    background: var(--bg-off);
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-bottom: 56px;
-  }
-
-  @media (max-width: 768px) {
-    .stats-grid { grid-template-columns: 1fr; }
-  }
-
-  .stat-card {
-    background: #ffffff;
-    border: 1px solid rgba(15, 20, 26, 0.08);
-    border-radius: var(--radius-card);
-    padding: 34px 28px;
-    text-align: left;
-  }
-
-  .stat-card strong {
-    display: block;
-    font-family: 'Poppins', sans-serif;
-    font-size: clamp(30px, 3.6vw, 42px);
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 6px;
-  }
-
-  .stat-card span {
-    font-size: 14.5px;
-    color: var(--text-muted);
-  }
-
-  .clients-row {
-    border-top: 1px solid rgba(15, 20, 26, 0.1);
-    padding-top: 36px;
-  }
-
-  .clients-row p.label {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    margin-bottom: 20px;
-  }
-
-  .clients-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .client-badge {
-    border: 1px solid rgba(15, 20, 26, 0.12);
-    border-radius: 999px;
-    padding: 10px 22px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 14.5px;
-    color: var(--text);
-    background: #ffffff;
-  }
-
-  /* ---------- KONTAKT / CTA ---------- */
-
-  .contact-section {
-    position: relative;
-    background: linear-gradient(160deg, var(--accent-darker) 0%, var(--accent-dark) 55%, var(--accent) 100%);
-    color: #ffffff;
-    overflow: hidden;
-  }
-
-  .contact-section::before {
-    content: "";
-    position: absolute;
-    bottom: -160px;
-    left: -80px;
-    width: 480px;
-    height: 480px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 56px;
-    position: relative;
-    z-index: 1;
-  }
-
-  @media (max-width: 900px) {
-    .contact-grid { grid-template-columns: 1fr; gap: 36px; }
-  }
-
-  .contact-intro h2 {
-    color: #ffffff;
-    font-size: clamp(28px, 3.4vw, 38px);
-    font-weight: 700;
-    margin-bottom: 18px;
-  }
-
-  .contact-intro p {
-    color: rgba(255, 255, 255, 0.78);
-    font-size: 16.5px;
-    max-width: 46ch;
-    margin-bottom: 30px;
-  }
-
-  .contact-info-list {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    margin-bottom: 34px;
-  }
-
-  .contact-info-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-  }
-
-  .contact-info-item svg {
-    width: 22px;
-    height: 22px;
-    stroke: #ffffff;
-    fill: none;
-    stroke-width: 1.6;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .contact-info-item strong {
-    display: block;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    margin-bottom: 2px;
-  }
-
-  .contact-info-item span {
-    font-size: 14.5px;
-    color: rgba(255, 255, 255, 0.72);
-  }
-
-  .contact-form {
-    background: #ffffff;
-    border-radius: var(--radius-card);
-    padding: 36px;
-  }
-
-  .contact-form h3 {
-    font-size: 19px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 22px;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-
-  @media (max-width: 520px) {
-    .form-row { grid-template-columns: 1fr; }
-  }
-
-  .contact-form label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    border: 1.5px solid rgba(15, 20, 26, 0.15);
-    border-radius: var(--radius-btn);
-    padding: 12px 14px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    color: var(--text);
-    background: #fbfcfd;
-  }
-
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
-
-  .contact-form textarea {
-    min-height: 110px;
-    resize: vertical;
-    margin-bottom: 20px;
-  }
-
-  .contact-form .btn { width: 100%; }
 
   /* ---------- FOOTER ---------- */
-
-  .site-footer {
-    background: #0e1116;
-    color: rgba(255, 255, 255, 0.6);
+  .footer{ background:#050f1f; color:var(--on-dark-muted); }
+  .f-top{
+    display:grid;
+    grid-template-columns:minmax(0, 4fr) repeat(3, minmax(0, 2fr));
+    gap:48px;
+    padding-top:80px;
+    padding-bottom:64px;
   }
-
-  .footer-inner {
-    padding-top: 60px;
-    padding-bottom: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 32px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  .f-brand img{ height:40px; width:auto; filter:brightness(0) invert(1); margin-bottom:24px; }
+  .f-brand p{ font-size:16px; color:var(--on-dark-faint); max-width:36ch; }
+  .f-col h4{
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#ffffff;
+    margin-bottom:20px;
   }
-
-  .footer-brand { max-width: 340px; }
-  .footer-brand img { height: 34px; margin-bottom: 14px; filter: brightness(0) invert(1); }
-  .footer-brand p { color: rgba(255, 255, 255, 0.5); font-size: 14.5px; }
-
-  .footer-links {
-    display: flex;
-    gap: 48px;
-    flex-wrap: wrap;
+  .f-col a, .f-col span{ display:block; font-size:16px; color:var(--on-dark-faint); margin-bottom:12px; }
+  .f-col a:hover{ color:#ffffff; }
+  .f-bottom{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    padding-top:24px;
+    padding-bottom:24px;
+    border-top:1px solid var(--on-dark-line);
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--on-dark-faint);
   }
+  .f-bottom a:hover{ color:#ffffff; }
+  @media (max-width:991px){ .f-top{ grid-template-columns:1fr 1fr; } .f-brand{ grid-column:1 / -1; } }
+  @media (max-width:600px){ .f-top{ grid-template-columns:1fr; gap:40px; padding-top:64px; } }
 
-  .footer-col h4 {
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 14px;
-  }
+  /* ---------- REVEAL (sadržaj je vidljiv i bez JS-a) ---------- */
+  .motion .rv{ transform:translateY(16px); transition:transform .9s var(--ease); }
+  .motion .rv.in{ transform:none; }
 
-  .footer-col a {
-    display: block;
-    font-size: 14.5px;
-    color: rgba(255, 255, 255, 0.55);
-    margin-bottom: 10px;
-  }
-
-  .footer-col a:hover { color: #ffffff; }
-
-  .footer-bottom {
-    padding-top: 22px;
-    padding-bottom: 22px;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.4);
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  /* ---------- SCROLL REVEAL ---------- */
-
-  .reveal {
-    opacity: 1;
-    transform: translateY(16px);
-    transition: transform 0.7s ease, opacity 0.7s ease;
-  }
-
-  .reveal.in-view {
-    transform: translateY(0);
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    *, *::before, *::after{ transition-duration:.01ms !important; animation-duration:.01ms !important; }
   }
 </style>
 </head>
 <body>
 
-  <header class="site-header" id="header">
-    <div class="wrap header-inner">
-      <a href="#hero" class="logo">
-        <img src="assets/logo.svg" alt="Građevinar - logo kompanije" class="logo-img">
-      </a>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="topbar-l">
+        <span class="addr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Gavrila Principa 40, Beograd</span>
+        <a href="tel:+381113446615"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>+381 11 344 66 15</a>
+        <a class="mail" href="mailto:office@gradjevinar.rs"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="m3 7 9 6 9-6"/></svg>office@gradjevinar.rs</a>
+      </div>
+      <div class="topbar-r">
+        <nav class="langs" aria-label="Jezik">
+          <a href="#" class="on" aria-current="true">SR</a>
+          <a href="https://gradjevinar.rs/en/" hreflang="en">EN</a>
+          <a href="https://gradjevinar.rs/de/" hreflang="de">DE</a>
+          <a href="https://gradjevinar.rs/it/" hreflang="it">IT</a>
+        </nav>
+      </div>
+    </div>
+  </div>
 
-      <nav class="nav-desktop">
+  <!-- HEADER -->
+  <header class="site-header" id="header">
+    <div class="wrap header-in">
+      <a href="#pocetak" class="logo" aria-label="Građevinar - početak stranice">
+        <img src="assets/logo.svg" alt="Građevinar logo" width="168" height="40">
+      </a>
+      <nav class="nav" aria-label="Glavni meni">
+        <a href="#kompanija">Kompanija</a>
         <a href="#usluge">Usluge</a>
-        <a href="#referentni-projekti">Referentni projekti</a>
+        <a href="#proces">Kako radimo</a>
+        <a href="#reference">Reference</a>
         <a href="#sertifikati">Sertifikati</a>
-        <a href="#o-nama">O nama</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
-
-      <div class="header-actions">
-        <div class="lang-switch">
-          <a href="#" aria-label="Srpski jezik"><img src="assets/sr.png" alt="Srpski jezik"></a>
-          <a href="#" aria-label="English"><img src="assets/en.png" alt="Engleski jezik"></a>
-          <a href="#" aria-label="Deutsch"><img src="assets/de.png" alt="Nemački jezik"></a>
-          <a href="#" aria-label="Italiano"><img src="assets/it.png" alt="Italijanski jezik"></a>
-        </div>
-        <a href="#kontakt" class="btn btn-primary">Zatraži ponudu</a>
+      <div class="header-cta">
+        <a href="#kontakt" class="btn">Zatraži ponudu</a>
       </div>
-
-      <button class="hamburger" id="hamburgerBtn" aria-label="Otvori meni" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="burger" id="burger" aria-label="Otvori meni" aria-expanded="false" aria-controls="mnav">
+        <span></span><span></span>
       </button>
     </div>
-
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#usluge">Usluge</a>
-      <a href="#referentni-projekti">Referentni projekti</a>
-      <a href="#sertifikati">Sertifikati</a>
-      <a href="#o-nama">O nama</a>
-      <a href="#kontakt">Kontakt</a>
-      <a href="#kontakt" class="btn btn-primary">Zatraži ponudu</a>
-    </div>
+    <nav class="mnav" id="mnav" aria-label="Mobilni meni">
+      <div class="wrap">
+        <a href="#kompanija">Kompanija <span>01</span></a>
+        <a href="#usluge">Usluge <span>02</span></a>
+        <a href="#proces">Kako radimo <span>03</span></a>
+        <a href="#reference">Reference <span>04</span></a>
+        <a href="#sertifikati">Sertifikati <span>05</span></a>
+        <a href="#kontakt">Kontakt <span>06</span></a>
+        <a href="#kontakt" class="btn">Zatraži ponudu za projekat</a>
+      </div>
+    </nav>
   </header>
 
+  <main>
+
   <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-overlay"></div>
-    <div class="wrap hero-inner">
-      <h1>Jedan izvođač. Kompletna gradnja. Gotov objekat.</h1>
-      <p class="hero-sub">Projektujemo, gradimo i rekonstruišemo industrijske, komercijalne i rezidencijalne objekte po sistemu ključ u ruke. Od prve linije na projektu do upotrebne dozvole, sve radi jedna licencirana kompanija.</p>
-      <a href="#kontakt" class="btn btn-primary btn-lg">Zatraži ponudu za svoj projekat</a>
+  <section class="hero" id="pocetak">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="tag">Generalni izvođač · Beograd · od 1989.</span>
+        <h1><span>Od nacrta do</span> <span class="hl">ključa u ruci.</span></h1>
+        <p class="hero-sub">Projektujemo, gradimo i opremamo industrijske, poslovne i stambene objekte, pa ih predajemo sa upotrebnom dozvolom. Jedan ugovor i jedan izvođač za ceo posao.</p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn has-arrow">Zatraži ponudu za projekat
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#reference" class="link">Pogledaj 18 referenci
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+          </a>
+        </div>
+        <div class="hero-proof">
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>ISO 9001 · 14001 · 45001</span>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Licence I040G1 · I092A2</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" id="heroVisual">
+        <div class="bp-bg" aria-hidden="true"></div>
+        <img class="hero-photo" src="assets/hero-muehlbauer.jpg" alt="Fabrika Muehlbauer Automation u Staroj Pazovi sa staklenom fasadom, koju je Građevinar predao 2025. godine" width="1800" height="1013">
+
+        <!-- Odsjaj koji povremeno pređe preko stakla -->
+        <svg class="sheen" viewBox="0 0 1800 1013" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <clipPath id="glass">
+              <path d="M186 398L1200 30L1248 882L150 846Z"/>
+              <path d="M1200 30L1388 278L1432 872L1248 882Z"/>
+            </clipPath>
+            <linearGradient id="sheenG" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+              <stop offset=".5" stop-color="#fff" stop-opacity=".38"/>
+              <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g clip-path="url(#glass)">
+            <rect x="0" y="-200" width="260" height="1400" fill="url(#sheenG)" transform="translate(-700 0)" style="transform-box:view-box" />
+          </g>
+        </svg>
+
+        <!-- Nacrt: linije prate stvarnu geometriju zgrade na fotografiji -->
+        <svg class="bp-lines" viewBox="0 0 1800 1013" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <!-- tlo -->
+          <path class="d" style="--i:0" pathLength="1" d="M0 836L1260 884L1800 800"/>
+          <!-- obrisi fasada -->
+          <path class="d" style="--i:1" pathLength="1" d="M150 846L186 398L1200 30L1248 882Z"/>
+          <path class="d" style="--i:2" pathLength="1" d="M1200 30L1388 278L1432 872"/>
+          <path class="d" style="--i:3" pathLength="1" d="M1388 278L1672 556L1700 806L1432 872"/>
+          <!-- etaže -->
+          <path class="d" style="--i:4" pathLength="1" d="M176 527L1213 266L1401 449L1680 629"/>
+          <path class="d" style="--i:5" pathLength="1" d="M164 670L1228 536L1415 638L1689 709"/>
+          <!-- mulioni -->
+          <path class="d thin" style="--i:6" pathLength="1" d="M354 337L323 852"/>
+          <path class="d thin" style="--i:7" pathLength="1" d="M496 286L473 857"/>
+          <path class="d thin" style="--i:8" pathLength="1" d="M673 221L663 863"/>
+          <path class="d thin" style="--i:9" pathLength="1" d="M779 183L778 867"/>
+          <path class="d thin" style="--i:10" pathLength="1" d="M900 139L910 871"/>
+          <path class="d thin" style="--i:11" pathLength="1" d="M1039 89L1065 876"/>
+          <path class="d thin" style="--i:12" pathLength="1" d="M1278 134L1326 878"/>
+          <path class="d thin" style="--i:13" pathLength="1" d="M1339 214L1385 875"/>
+          <!-- ose i kote -->
+          <path class="d axis" style="--i:14" pathLength="1" d="M516 858V946M809 868V946M1248 882V946M1432 872V946"/>
+          <path class="d thin" style="--i:15" pathLength="1" d="M420 990H1500M420 976V1004M1500 976V1004"/>
+          <circle class="bubble" cx="516" cy="964" r="18"/><text x="516" y="972" text-anchor="middle">B</text>
+          <circle class="bubble" cx="809" cy="964" r="18"/><text x="809" y="972" text-anchor="middle">C</text>
+          <circle class="bubble" cx="1248" cy="964" r="18"/><text x="1248" y="972" text-anchor="middle">D</text>
+          <circle class="bubble" cx="1432" cy="964" r="18"/><text x="1432" y="972" text-anchor="middle">E</text>
+          <text x="960" y="1004" text-anchor="middle">12 000 m²</text>
+          <text x="1262" y="920">±0,00</text>
+          <text x="1236" y="258" text-anchor="end">E3</text>
+          <text x="1250" y="528" text-anchor="end">E2</text>
+          <text x="1264" y="760" text-anchor="end">E1</text>
+        </svg>
+
+        <div class="build-line" aria-hidden="true"></div>
+
+        <div class="hero-status" id="heroStatus" aria-hidden="true"><i></i><span>Predato · sep 2025</span></div>
+
+        <div class="hero-card">
+          <small>Na fotografiji</small>
+          <strong>Muehlbauer Automation</strong>
+          <span>Stara Pazova · generalni izvođač</span>
+          <div class="meta"><span>12 000 m²</span><span>3 etaže</span><span>11 meseci</span></div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- BOL UVOD -->
-  <section class="pain">
+  <!-- BROJKE -->
+  <section class="stats" aria-label="Građevinar u brojkama">
+    <div class="wrap stats-grid">
+      <div class="stat rv">
+        <b data-count="1989" data-plain="1">1989</b>
+        <span>Osnovani u Beogradu</span>
+      </div>
+      <div class="stat rv">
+        <b><span data-count="300">300</span><sup>+</sup></b>
+        <span>Realizovanih projekata</span>
+      </div>
+      <div class="stat rv">
+        <b><span data-count="1000000">1.000.000</span><sup>m²</sup></b>
+        <span>Izgrađenih kvadrata</span>
+      </div>
+      <div class="stat rv">
+        <b><span data-count="130">130</span><sup>+</sup></b>
+        <span>Objekata za Delhaize Serbia</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTITORI -->
+  <section class="clients" aria-label="Investitori">
     <div class="wrap">
-      <p>Tražiš izvođača i za dva meseca imaš deset firmi u prepisci - projektant kaže jedno, izvođač drugo, podizvođač treće. Kad se projekat radi na jednom mestu a gradi na drugom, rokovi kasne i računi rastu. Mi taj problem rešavamo tako što ceo posao, od projekta do upotrebne dozvole, radimo u jednoj kompaniji.</p>
+      <p class="clients-label">Gradili smo za</p>
+    </div>
+    <div class="clients-wrap">
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>Muehlbauer Group</span>
+          <span>Wacker Neuson</span>
+          <span>Vorwerk &amp; Sohn</span>
+          <span>Ambasada SR Nemačke</span>
+          <span>Aptiv</span>
+          <span>Delphi Packard</span>
+          <span>Benetton</span>
+          <span>Delhaize Serbia</span>
+          <span>West Pharmaceutical</span>
+          <span>Zdravlje Actavis</span>
+          <span>Goethe-Institut</span>
+          <span>Ditre Italia</span>
+          <span>Omega Agro Group</span>
+          <span>Treća petoletka</span>
+        </div>
+        <div class="marquee-track" aria-hidden="true">
+          <span>Muehlbauer Group</span>
+          <span>Wacker Neuson</span>
+          <span>Vorwerk &amp; Sohn</span>
+          <span>Ambasada SR Nemačke</span>
+          <span>Aptiv</span>
+          <span>Delphi Packard</span>
+          <span>Benetton</span>
+          <span>Delhaize Serbia</span>
+          <span>West Pharmaceutical</span>
+          <span>Zdravlje Actavis</span>
+          <span>Goethe-Institut</span>
+          <span>Ditre Italia</span>
+          <span>Omega Agro Group</span>
+          <span>Treća petoletka</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOMPANIJA -->
+  <section class="sec" id="kompanija">
+    <div class="wrap about-grid">
+      <div class="about-copy rv">
+        <span class="tag">Kompanija</span>
+        <h2>Jedno od prvih privatnih građevinskih preduzeća u Srbiji</h2>
+        <p class="lead">Građevinar je osnovan 1989. u Beogradu. Od tada projektujemo, gradimo, rekonstruišemo i adaptiramo industrijske, poslovne i stambene objekte. Predali smo preko 300 projekata, svi su u Srbiji.</p>
+        <p>Radimo isključivo na domaćem tržištu, najčešće kao generalni izvođač po sistemu ključ u ruke. Zato dobro znamo lokalne propise i kako se kod nas dolazi do upotrebne dozvole.</p>
+        <p>Iskusni inženjeri rade rame uz rame sa mladim timom, a na terenu je naša kompletno opremljena operativa. Znanje sa velikih projekata prenosimo na mlađe kolege i stalno ulažemo u njihovu obuku.</p>
+        <blockquote class="motto">
+          <q>Zadovoljni partneri su ključ našeg uspeha.</q>
+          <cite>Moto kompanije</cite>
+        </blockquote>
+      </div>
+      <div class="collage rv">
+        <figure class="c1">
+          <img src="assets/teren-armatura.jpg" alt="Armiranje temeljne ploče na gradilištu nove zgrade Ambasade SR Nemačke u Beogradu, iznad njega toranjski kran" loading="lazy" width="819" height="1024">
+          <figcaption>Ambasada SR Nemačke · temelji</figcaption>
+        </figure>
+        <figure class="c2">
+          <img src="assets/teren-fasada.jpg" alt="Radnici na skeli postavljaju fasadu Nemačke škole u Beogradu" loading="lazy" width="768" height="768">
+          <figcaption>Nemačka škola · fasada</figcaption>
+        </figure>
+        <div class="since">
+          <b>1989</b>
+          <span>Sedište u Gavrila Principa 40, Savski venac</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- USLUGE -->
-  <section class="section-pad" id="usluge">
+  <section class="sec paper" id="usluge">
     <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Usluge</span>
-        <h2>Šta radimo, od prve linije do ključa u ruci</h2>
-        <p>Ne prepuštamo delove posla drugima. Projektovanje, izgradnju i rekonstrukciju vodimo sami, kroz ceo proces.</p>
+      <div class="head rv">
+        <span class="tag">Usluge</span>
+        <h2>Jedan ugovor. Ceo objekat.</h2>
+        <p>Ne moraš posebno da tražiš projektanta, izvođača i instalatere. Sve to radimo mi, pod jednom odgovornošću i sa jednim rokom.</p>
       </div>
 
-      <div class="services-grid">
-        <div class="service-card reveal">
-          <div class="icon-badge">
-            <svg viewBox="0 0 24 24"><path d="M3 17V7l9-4 9 4v10l-9 4-9-4Z"/><path d="M3 7l9 4 9-4"/><path d="M12 11v10"/></svg>
+      <div class="svc-grid">
+        <article class="svc rv">
+          <div class="svc-top">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 34h28M8 34V8h18l6 6v20"/><path d="M26 8v6h6"/><path d="M13 16h8M13 21h14M13 26h14"/></svg>
+            <span class="svc-num">01</span>
           </div>
           <h3>Projektovanje</h3>
-          <p>Radimo idejna i izvođačka rešenja usklađena sa propisima, tako da gradnja krene bez kašnjenja zbog papira.</p>
-        </div>
-
-        <div class="service-card reveal">
-          <div class="icon-badge">
-            <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V9l7-6 7 6v12"/><path d="M9 21v-6h6v6"/></svg>
+          <p>Tehnička dokumentacija po zahtevima investitora i domaćim propisima, pre nego što prva mašina dođe na parcelu.</p>
+        </article>
+        <article class="svc rv">
+          <div class="svc-top">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 34h32"/><path d="M7 34V18l13-9 13 9v16"/><path d="M13 34V24h14v10"/><path d="M20 24v10"/></svg>
+            <span class="svc-num">02</span>
           </div>
           <h3>Izgradnja ključ u ruke</h3>
-          <p>Gradimo industrijske hale, poslovne zgrade i stambene objekte od temelja do useljenja, uz jedan ugovor i jednu odgovornost.</p>
-        </div>
-
-        <div class="service-card reveal">
-          <div class="icon-badge">
-            <svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 8l7-5 7 5"/><path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"/></svg>
+          <p>Arhitektonsko-građevinski radovi na fabrikama, halama, poslovnim i stambenim zgradama, od temelja do krova.</p>
+        </article>
+        <article class="svc rv">
+          <div class="svc-top">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 34h28"/><path d="M9 34V14h14v20"/><path d="M23 20h8v14"/><path d="M13 19h6M13 24h6M13 29h6"/><path d="m27 6 5 5-3 3-5-5z"/><path d="m24 9-4 4"/></svg>
+            <span class="svc-num">03</span>
           </div>
-          <h3>Rekonstrukcija</h3>
-          <p>Proširujemo, nadograđujemo i modernizujemo postojeće objekte, bez dugog zastoja u tvom poslovanju.</p>
-        </div>
-
-        <div class="service-card reveal">
-          <div class="icon-badge">
-            <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+          <h3>Rekonstrukcija i adaptacija</h3>
+          <p>Proširujemo i obnavljamo pogone, škole i poslovne prostore. Za Delhaize smo rekonstruisali i izgradili više od 130 prodavnica.</p>
+        </article>
+        <article class="svc rv">
+          <div class="svc-top">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M22 4 10 22h9l-2 14 13-19h-9l1-13z"/></svg>
+            <span class="svc-num">04</span>
           </div>
-          <h3>Dozvole i predaja</h3>
-          <p>Vodimo projekat kroz tehnički prijem i sve dozvole, tako da na kraju samo uzmeš ključeve objekta.</p>
+          <h3>Elektro i mašinske instalacije</h3>
+          <p>Instalacije izvodimo u okviru istog ugovora, uključujući čiste sobe klase ISO 5 i ISO 8 za farmaceutsku proizvodnju.</p>
+        </article>
+        <article class="svc rv">
+          <div class="svc-top">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 14 20 7l14 7v14l-14 7-14-7z"/><path d="m6 14 14 7 14-7M20 21v14"/><path d="m13 10.5 14 7"/></svg>
+            <span class="svc-num">05</span>
+          </div>
+          <h3>Nabavka i ugradnja opreme</h3>
+          <p>Nabavljamo materijal i opremu za ceo objekat, od fasade do linija za hlađenje, sortiranje i pakovanje.</p>
+        </article>
+        <article class="svc rv">
+          <div class="svc-top">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="13" cy="20" r="7"/><circle cx="13" cy="20" r="2"/><path d="M20 20h16M30 20v6M35 20v4"/></svg>
+            <span class="svc-num">06</span>
+          </div>
+          <h3>Upotrebna dozvola</h3>
+          <p>Objekat vodimo kroz tehnički prijem i predajemo ga sa upotrebnom dozvolom. Ti dobijaš ključeve i počinješ da radiš.</p>
+        </article>
+      </div>
+
+      <div class="svc-band rv">
+        <img src="assets/hala-enterijer.jpg" alt="Unutrašnjost nove proizvodne hale Wacker Neuson u Kragujevcu sa obeleženim podom i rasvetom" loading="lazy" width="1600" height="900">
+        <div class="svc-band-in">
+          <span class="tag">Wacker Neuson · Kragujevac</span>
+          <h3>27.000 m² fabrike za deset meseci, sa svim instalacijama</h3>
+          <p>Počeli smo u januaru 2022, predali u oktobru iste godine. Projektovanje, izgradnja i ugradnja svih mašinskih i elektro instalacija išli su kroz jedan ugovor.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- REFERENTNI PROJEKTI -->
-  <section class="section-pad" id="referentni-projekti" style="background: var(--bg-off);">
+  <!-- PROCES -->
+  <section class="sec" id="proces">
+    <div class="wrap proc-grid">
+      <div class="proc-side">
+        <div class="head rv">
+          <span class="tag">Kako radimo</span>
+          <h2>Od prvog sastanka do ključa u ruci</h2>
+          <p>Ključ u ruke kod nas znači da od projekta do upotrebne dozvole imaš jednog sagovornika i jednog odgovornog.</p>
+        </div>
+        <div class="proc-key rv">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="16" cy="24" r="9"/><circle cx="16" cy="24" r="3"/><path d="M25 24h19M38 24v7M43 24v5"/></svg>
+          <div>
+            <b>Muehlbauer Automation</b>
+            <span>Novembar 2024 → septembar 2025. Svih pet koraka, 12.000 m².</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="steps" id="steps">
+        <span class="steps-fill" id="stepsFill" aria-hidden="true"></span>
+        <ol class="steps-list">
+        <li class="step rv">
+          <span class="step-dot">01</span>
+          <div>
+            <h3>Zahtevi investitora</h3>
+            <p>Krećemo od tvojih zahteva i standarda. Muehlbauer Group, Wacker Neuson i Ambasada SR Nemačke imali su svoje, strože od propisa, i po njima smo gradili.</p>
+          </div>
+        </li>
+        <li class="step rv">
+          <span class="step-dot">02</span>
+          <div>
+            <h3>Projekat</h3>
+            <p>Projektujemo objekat i pripremamo tehničku dokumentaciju. Kad projekat i gradnju radi ista firma, izvođač ne čeka odgovore od projektanta.</p>
+          </div>
+        </li>
+        <li class="step rv">
+          <span class="step-dot">03</span>
+          <div>
+            <h3>Gradilište</h3>
+            <p>Naša operativa izvodi arhitektonsko-građevinske radove. Rok iz ugovora je rok koji važi: halu od 25.000 m² za Delphi Packard završili smo za šest meseci.</p>
+            <div class="chips"><span>AG radovi</span><span>Konstrukcija</span><span>Fasada</span><span>Krov</span></div>
+          </div>
+        </li>
+        <li class="step rv">
+          <span class="step-dot">04</span>
+          <div>
+            <h3>Instalacije i oprema</h3>
+            <p>Elektro i mašinske instalacije, nabavka i ugradnja opreme idu kroz isti ugovor. Nema čekanja na drugog izvođača i nema prebacivanja odgovornosti.</p>
+            <div class="chips"><span>Elektro</span><span>Mašinske</span><span>Čiste sobe</span><span>Tehnološka oprema</span></div>
+          </div>
+        </li>
+        <li class="step rv">
+          <span class="step-dot">05</span>
+          <div>
+            <h3>Upotrebna dozvola i ključ</h3>
+            <p>Objekat prolazi tehnički prijem i dobija upotrebnu dozvolu. Tek tada ti predajemo ključeve.</p>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRADILIŠTE KROZ VREME -->
+  <section class="sec dark" id="gradiliste">
     <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Referentni projekti</span>
-        <h2>Objekti koje smo isporučili</h2>
-        <p>Preko 300 projekata i više od 1.000.000 m² izgrađene površine stoji iza ovih fotografija.</p>
+      <div class="head rv">
+        <span class="tag">Gradilište kroz vreme</span>
+        <h2>Vorwerk &amp; Sohn, Čačak: 45.000 m² za 15 meseci</h2>
+        <p>Povuci klizač i pogledaj kako je kompleks rastao, od poravnate parcele do otvaranja fabrike.</p>
       </div>
 
-      <div class="projects-grid">
-        <div class="project-card reveal">
-          <img src="assets/1592209419cacak-otvaranje-forverk-fotorina1-uai-258x145.jpg" alt="Fabrika Vorwerk & Sohn u Čačku, pogled iz vazduha">
-          <div class="project-info">
-            <span class="tag">Industrijski objekat</span>
-            <h3>Vorwerk & Sohn, Čačak</h3>
-            <p>Proizvodni pogon izgrađen po sistemu ključ u ruke.</p>
+      <div class="tl-grid">
+        <div class="scrub rv" id="scrub">
+          <div class="frames">
+            <img src="assets/faza-1.jpg" alt="Faza 1: pripremni radovi i ravnanje parcele za kompleks Vorwerk u Čačku, snimak dronom" loading="lazy" width="1142" height="713">
+            <img src="assets/faza-2.jpg" alt="Faza 2: prvi montažni stubovi hale Vorwerk" loading="lazy" width="1140" height="712">
+            <img src="assets/faza-3.jpg" alt="Faza 3: stubovi i krovni nosači dela hale Vorwerk" loading="lazy" width="1140" height="712">
+            <img src="assets/faza-4.jpg" alt="Faza 4: kompletna noseća konstrukcija hale Vorwerk" loading="lazy" width="1138" height="711">
+            <img src="assets/faza-5.jpg" alt="Faza 5: završen kompleks Vorwerk Autotec i Eldisy sa administrativnom zgradom i parkingom" loading="lazy" width="1400" height="875">
+            <div class="frame-label" id="frameLabel" aria-live="polite"><b>05</b><span>Predat kompleks</span></div>
+          </div>
+          <div class="scrub-ctrl">
+            <div class="scrub-track">
+              <div class="scrub-rail"></div>
+              <div class="scrub-fill" id="scrubFill"></div>
+              <input type="range" id="scrubRange" min="0" max="400" step="1" value="400" aria-label="Faza izgradnje kompleksa Vorwerk">
+              <div class="scrub-knob" id="scrubKnob"></div>
+            </div>
+            <div class="scrub-stops" id="scrubStops">
+              <button type="button" data-v="0"><b>01</b><span>Parcela</span></button>
+              <button type="button" data-v="100"><b>02</b><span>Stubovi</span></button>
+              <button type="button" data-v="200"><b>03</b><span>Nosači</span></button>
+              <button type="button" data-v="300"><b>04</b><span>Konstrukcija</span></button>
+              <button type="button" data-v="400" class="on"><b>05</b><span>Predato</span></button>
+            </div>
           </div>
         </div>
 
-        <div class="project-card reveal">
-          <img src="assets/20221117_141745-scaled-uai-258x145.jpg" alt="Industrijska hala sa utovarnim rampama u izgradnji">
-          <div class="project-info">
-            <span class="tag">Industrijski objekat</span>
-            <h3>Proizvodno-skladišna hala</h3>
-            <p>Hala sa utovarnim rampama i pratećim administrativnim delom.</p>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <img src="assets/20251006_150416-scaled-uai-258x145.jpg" alt="Poslovna zgrada sa staklenom fasadom">
-          <div class="project-info">
-            <span class="tag">Komercijalni objekat</span>
-            <h3>Poslovno-administrativna zgrada</h3>
-            <p>Objekat sa staklenom fasadom i savremenom instalacionom opremom.</p>
-          </div>
-        </div>
+        <aside class="tl-facts rv">
+          <dl>
+            <div><dt>Investitor</dt><dd>Vorwerk &amp; Sohn Group</dd></div>
+            <div><dt>Objekti</dt><dd>Vorwerk Autotec i Eldisy, delovi za auto industriju</dd></div>
+            <div><dt>Površina</dt><dd>45.000 m², od toga 5.000 m² administracije na 3 etaže</dd></div>
+            <div><dt>Rok</dt><dd>Avgust 2018 → novembar 2019</dd></div>
+          </dl>
+          <p>Dva proizvodna objekta povezana zajedničkom administrativnom zgradom, po sistemu ključ u ruke.</p>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- SERTIFIKATI I LICENCE -->
-  <section class="section-pad certs-band" id="sertifikati">
+  <!-- REFERENCE -->
+  <section class="sec" id="reference">
     <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Sertifikati i licence</span>
-        <h2>Šta stoji iza svakog ugovora</h2>
-        <p>Radimo po standardima koji se provere pri svakoj primopredaji objekta, ne samo na papiru.</p>
+      <div class="head-row">
+        <div class="head rv">
+          <span class="tag">Reference</span>
+          <h2>Fabrike, škole i ambasada koje smo predali</h2>
+          <p>Izdvojili smo 18 od preko 300 projekata. Filtriraj ih po delatnosti investitora.</p>
+        </div>
       </div>
 
-      <div class="certs-grid">
-        <div class="cert-badge reveal">
-          <svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4Z"/></svg>
-          <div class="cert-title">ISO 9001</div>
-          <div class="cert-desc">Sistem upravljanja kvalitetom</div>
-        </div>
-        <div class="cert-badge reveal">
-          <svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4Z"/></svg>
-          <div class="cert-title">ISO 14001</div>
-          <div class="cert-desc">Upravljanje životnom sredinom</div>
-        </div>
-        <div class="cert-badge reveal">
-          <svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4Z"/></svg>
-          <div class="cert-title">ISO 45001</div>
-          <div class="cert-desc">Bezbednost i zdravlje na radu</div>
-        </div>
-        <div class="cert-badge reveal">
-          <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12h8"/><path d="M8 16h5"/></svg>
-          <div class="cert-title">Licenca I040G1</div>
-          <div class="cert-desc">Građenje objekata visokogradnje</div>
-        </div>
-        <div class="cert-badge reveal">
-          <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12h8"/><path d="M8 16h5"/></svg>
-          <div class="cert-title">Licenca I092A2</div>
-          <div class="cert-desc">Izrada tehničke dokumentacije</div>
-        </div>
+      <div class="filters" role="group" aria-label="Filtriraj reference">
+        <button class="chip" type="button" data-f="all" aria-pressed="true">Sve <small>18</small></button>
+        <button class="chip" type="button" data-f="proizvodnja" aria-pressed="false">Industrija i proizvodnja <small>5</small></button>
+        <button class="chip" type="button" data-f="auto" aria-pressed="false">Automobilska industrija <small>5</small></button>
+        <button class="chip" type="button" data-f="farmacija" aria-pressed="false">Farmacija <small>2</small></button>
+        <button class="chip" type="button" data-f="agro" aria-pressed="false">Hrana i agro <small>2</small></button>
+        <button class="chip" type="button" data-f="javni" aria-pressed="false">Javni i diplomatski <small>3</small></button>
+        <button class="chip" type="button" data-f="maloprodaja" aria-pressed="false">Maloprodaja <small>1</small></button>
+      </div>
+
+      <div class="ref-grid" id="refGrid">
+        <article class="ref feat" data-c="proizvodnja">
+          <div class="ref-img">
+            <img src="assets/ref-muehlbauer.jpg" alt="Fabrika Muehlbauer Automation u Staroj Pazovi snimljena dronom" loading="lazy" width="960" height="720">
+            <span class="area">12.000 m²</span>
+            <p class="ref-desc">Fabrika mašina za nove tehnologije i biometrijska dokumenta. Tri etaže sa posebnim opterećenjima, AG radovi, elektro i mašinske instalacije i kompletna nabavka.</p>
+          </div>
+          <div class="ref-meta"><span>Industrijski objekat</span><span>2024-2025</span></div>
+          <h3>Muehlbauer Automation</h3>
+          <span class="city">Stara Pazova</span>
+          <p class="note">Tri etaže sa posebnim opterećenjima, sve instalacije i nabavka.</p>
+        </article>
+
+        <article class="ref" data-c="proizvodnja">
+          <div class="ref-img">
+            <img src="assets/ref-treca-petoletka.jpg" alt="Poslovni kompleks Treća petoletka sa proizvodno-distributivnim objektom i auto centrom, snimak dronom" loading="lazy" width="960" height="720">
+            <span class="area">22.500 m²</span>
+            <p class="ref-desc">Proizvodno-distributivni objekat i auto centar sa pratećim objektima. Od projektovanja do predaje ključeva.</p>
+          </div>
+          <div class="ref-meta"><span>Poslovni kompleks</span><span>2024-2026</span></div>
+          <h3>Treća petoletka</h3>
+          <span class="city">Proizvodnja i auto centar</span>
+          <p class="note">Završen u februaru 2026.</p>
+        </article>
+
+        <article class="ref" data-c="agro">
+          <div class="ref-img">
+            <img src="assets/ref-omega.jpg" alt="Nova hladnjača Omega Agro Group u Slatini kod Jagodine, snimak dronom" loading="lazy" width="960" height="720">
+            <span class="area">3.000 m²</span>
+            <p class="ref-desc">Hladnjača kapaciteta 1.000 tona za sortiranje i pakovanje stonog grožđa, sa opremom za hlađenje i pakovanje.</p>
+          </div>
+          <div class="ref-meta"><span>Hladnjača</span><span>2026</span></div>
+          <h3>Omega Agro Group</h3>
+          <span class="city">Slatina, Jagodina</span>
+          <p class="note">Hladnjača od 1.000 tona za stono grožđe.</p>
+        </article>
+
+        <article class="ref" data-c="proizvodnja">
+          <div class="ref-img">
+            <img src="assets/ref-wacker.jpg" alt="Administrativni deo fabrike Wacker Neuson u Kragujevcu" loading="lazy" width="960" height="720">
+            <span class="area">27.000 m²</span>
+            <p class="ref-desc">Fabrika građevinskih mašina. Projektovanje, izgradnja, nabavka i ugradnja svih mašinskih i elektro instalacija.</p>
+          </div>
+          <div class="ref-meta"><span>Industrijski objekat</span><span>2022</span></div>
+          <h3>Wacker Neuson</h3>
+          <span class="city">Kragujevac</span>
+          <p class="note">Januar → oktobar 2022.</p>
+        </article>
+
+        <article class="ref" data-c="auto">
+          <div class="ref-img">
+            <img src="assets/ref-vorwerk.jpg" alt="Administrativna zgrada kompleksa Vorwerk u Čačku sa staklenim ulazom" loading="lazy" width="960" height="720">
+            <span class="area">45.000 m²</span>
+            <p class="ref-desc">Dva proizvodna objekta za auto industriju, Vorwerk Autotec i Eldisy, i zajednička administrativna zgrada od 5.000 m².</p>
+          </div>
+          <div class="ref-meta"><span>Industrijski kompleks</span><span>2018-2019</span></div>
+          <h3>Vorwerk &amp; Sohn</h3>
+          <span class="city">Čačak</span>
+          <p class="note">Dva proizvodna objekta i administracija.</p>
+        </article>
+
+        <article class="ref" data-c="javni">
+          <div class="ref-img">
+            <img src="assets/ref-ambasada.jpg" alt="Nova zgrada Ambasade Savezne Republike Nemačke u ulici Kneza Miloša u Beogradu" loading="lazy" width="960" height="720">
+            <span class="area">5.000 m²</span>
+            <p class="ref-desc">Posao smo dobili na evropskom tenderu za generalnog izvođača. Zgrada Po+P+4 sa opremom po najvišim bezbednosnim standardima.</p>
+          </div>
+          <div class="ref-meta"><span>Diplomatski objekat</span><span>2018-2020</span></div>
+          <h3>Ambasada SR Nemačke</h3>
+          <span class="city">Beograd, Kneza Miloša</span>
+          <p class="note">Izabrani na evropskom tenderu.</p>
+        </article>
+
+        <article class="ref" data-c="auto">
+          <div class="ref-img">
+            <img src="assets/ref-aptiv.jpg" alt="Fabrika kablova Aptiv u Leskovcu, pogled iz vazduha" loading="lazy" width="769" height="577">
+            <span class="area">30.000 m²</span>
+            <p class="ref-desc">Fabrika kablova za američku kompaniju, po sistemu ključ u ruke. Od januara do oktobra 2018.</p>
+          </div>
+          <div class="ref-meta"><span>Industrijski objekat</span><span>2018</span></div>
+          <h3>Aptiv</h3>
+          <span class="city">Leskovac</span>
+          <p class="note">30.000 m² za deset meseci.</p>
+        </article>
+
+        <article class="ref" data-c="auto">
+          <div class="ref-img">
+            <img src="assets/ref-delphi.jpg" alt="Završen objekat Delphi Packard u Novom Sadu sa administrativnim delom" loading="lazy" width="960" height="720">
+            <span class="area">25.000 m²</span>
+            <p class="ref-desc">Objekat po specifičnim zahtevima investitora, završen za samo šest meseci, po sistemu ključ u ruke.</p>
+          </div>
+          <div class="ref-meta"><span>Industrijski objekat</span><span>2016</span></div>
+          <h3>Delphi Packard</h3>
+          <span class="city">Novi Sad</span>
+          <p class="note">Završeno za šest meseci.</p>
+        </article>
+
+        <article class="ref" data-c="farmacija">
+          <div class="ref-img">
+            <img src="assets/ref-west.jpg" alt="Proizvodni kompleks West Pharmaceutical Services sa proširenjima, snimak dronom" loading="lazy" width="960" height="720">
+            <span class="area">7.000 m²</span>
+            <p class="ref-desc">Proširenja proizvodnje sa čistim sobama klase ISO 5 i ISO 8 i skoro duplo veća administrativna zgrada.</p>
+          </div>
+          <div class="ref-meta"><span>Farmaceutski objekat</span><span>2022-2023</span></div>
+          <h3>West Pharmaceutical Services</h3>
+          <span class="city">Čiste sobe ISO 5 i ISO 8</span>
+          <p class="note">Proširenja sa čistim sobama.</p>
+        </article>
+
+        <article class="ref extra" data-c="auto">
+          <div class="ref-img">
+            <img src="assets/ref-img.jpg" alt="Objekat IMG Manufacturing sa proizvodnim i administrativnim delom, snimak dronom" loading="lazy" width="960" height="720">
+            <span class="area">4.000 m²</span>
+            <p class="ref-desc">Proizvodnja i obrada delova od plastike za auto i druge specijalizovane industrije, sa administrativnim delom.</p>
+          </div>
+          <div class="ref-meta"><span>Industrijski objekat</span><span>2022-2023</span></div>
+          <h3>IMG Manufacturing</h3>
+          <span class="city">Delovi od plastike za auto industriju</span>
+          <p class="note">Proizvodni i administrativni deo.</p>
+        </article>
+
+        <article class="ref extra" data-c="farmacija">
+          <div class="ref-img">
+            <img src="assets/ref-zdravlje.jpg" alt="Upravna zgrada farmaceutske kompanije Zdravlje Actavis u sumrak" loading="lazy" width="960" height="720">
+            <span class="area">23.000+ m²</span>
+            <p class="ref-desc">Deset godina rekonstrukcija i novih pogona za lekove po GMP standardu, uključujući čiste sobe i mikrobiološku laboratoriju.</p>
+          </div>
+          <div class="ref-meta"><span>Farmaceutski objekat</span><span>2003-2013</span></div>
+          <h3>Zdravlje Actavis</h3>
+          <span class="city">Pogoni po GMP standardu</span>
+          <p class="note">Deset godina saradnje.</p>
+        </article>
+
+        <article class="ref extra" data-c="proizvodnja">
+          <div class="ref-img">
+            <img src="assets/ref-top-sofa.jpg" alt="Montaža noseće konstrukcije pogona Top Sofa u Vranju" loading="lazy" width="960" height="720">
+            <span class="area">15.000 m²</span>
+            <p class="ref-desc">Novi proizvodni pogon italijanskog proizvođača nameštaja Ditre Italia, po sistemu ključ u ruke.</p>
+          </div>
+          <div class="ref-meta"><span>Industrijski objekat</span><span>2017</span></div>
+          <h3>Ditre Italia · Top Sofa</h3>
+          <span class="city">Vranje</span>
+          <p class="note">Pogon italijanskog proizvođača nameštaja.</p>
+        </article>
+
+        <article class="ref extra" data-c="agro">
+          <div class="ref-img">
+            <img src="assets/ref-mpz.jpg" alt="Objekat MPZ Agrar u Novom Sadu sa parkingom" loading="lazy" width="960" height="720">
+            <span class="area">15.000 m²</span>
+            <p class="ref-desc">Industrijski objekat izveden po sistemu ključ u ruke.</p>
+          </div>
+          <div class="ref-meta"><span>Industrijski objekat</span><span>2017</span></div>
+          <h3>MPZ Agrar</h3>
+          <span class="city">Novi Sad</span>
+          <p class="note">Po sistemu ključ u ruke.</p>
+        </article>
+
+        <article class="ref extra" data-c="proizvodnja">
+          <div class="ref-img">
+            <img src="assets/ref-benetton.jpg" alt="Objekat Benetton u kompleksu bivše fabrike Nitex u Nišu" loading="lazy" width="960" height="720">
+            <span class="area">50.000+ m²</span>
+            <p class="ref-desc">Novi pogoni i rekonstrukcija postojećih pogona i magacina u kompleksu bivše fabrike Nitex.</p>
+          </div>
+          <div class="ref-meta"><span>Izgradnja i rekonstrukcija</span><span>2011-2013</span></div>
+          <h3>Benetton Serbia</h3>
+          <span class="city">Niš</span>
+          <p class="note">Novi pogoni i rekonstrukcija fabrike Nitex.</p>
+        </article>
+
+        <article class="ref extra" data-c="auto">
+          <div class="ref-img">
+            <img src="assets/ref-htl.jpg" alt="Novi proizvodni pogon HT&amp;L Fitting u industrijskoj zoni Grošnica u Kragujevcu" loading="lazy" width="960" height="720">
+            <span class="area">6.000 m²</span>
+            <p class="ref-desc">Proizvodni pogon dobavljača FIAT-a u industrijskoj zoni Grošnica.</p>
+          </div>
+          <div class="ref-meta"><span>Industrijski objekat</span><span>2011-2012</span></div>
+          <h3>HT&amp;L Fitting Serbia</h3>
+          <span class="city">Kragujevac</span>
+          <p class="note">Dobavljač FIAT-a.</p>
+        </article>
+
+        <article class="ref extra" data-c="maloprodaja">
+          <div class="ref-img">
+            <img src="assets/ref-delhaize.jpg" alt="Maxi prodavnica trgovinskog lanca Delhaize Serbia" loading="lazy" width="960" height="720">
+            <span class="area">90.000+ m²</span>
+            <p class="ref-desc">Tokom 15 godina rekonstruisali smo i izgradili više od 130 maloprodajnih objekata najvećeg srpskog trgovinskog lanca.</p>
+          </div>
+          <div class="ref-meta"><span>Maloprodajni objekti</span><span>1990-2005</span></div>
+          <h3>Delhaize Serbia · C-Market</h3>
+          <span class="city">Više od 130 prodavnica širom Srbije</span>
+          <p class="note">15 godina saradnje.</p>
+        </article>
+
+        <article class="ref extra" data-c="javni">
+          <div class="ref-img">
+            <img src="assets/ref-goethe.jpg" alt="Obnovljena fasada Goethe-Instituta u Beogradu" loading="lazy" width="960" height="720">
+            <span class="area">900 m²</span>
+            <p class="ref-desc">Kompletna rekonstrukcija koju je finansiralo Ministarstvo kulture SR Nemačke, po projektu izrađenom u Nemačkoj.</p>
+          </div>
+          <div class="ref-meta"><span>Obrazovna ustanova</span><span>2015</span></div>
+          <h3>Goethe-Institut</h3>
+          <span class="city">Beograd</span>
+          <p class="note">Po nemačkim i srpskim standardima.</p>
+        </article>
+
+        <article class="ref extra" data-c="javni">
+          <div class="ref-img">
+            <img src="assets/ref-nemacka-skola.jpg" alt="Zgrada Nemačke škole u Beogradu posle rekonstrukcije" loading="lazy" width="960" height="720">
+            <span class="area">3.300 m²</span>
+            <p class="ref-desc">Rekonstrukcija i novo krilo sa fiskulturnom salom, kabinetima i kantinom, pod nadzorom stručnjaka iz Nemačke.</p>
+          </div>
+          <div class="ref-meta"><span>Obrazovna ustanova</span><span>2014</span></div>
+          <h3>Nemačka škola Beograd</h3>
+          <span class="city">Beograd</span>
+          <p class="note">Novo krilo sa fiskulturnom salom.</p>
+        </article>
+      </div>
+
+      <div class="ref-more">
+        <button type="button" class="btn has-arrow" id="refMore" aria-expanded="false">Prikaži svih 18 referenci
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- O NAMA -->
-  <section class="section-pad" id="o-nama">
+  <!-- ZAŠTO -->
+  <section class="sec paper" id="zasto">
     <div class="wrap">
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <span class="eyebrow">O nama</span>
-          <h2>Gradimo u Srbiji od 1989. godine</h2>
-          <p>Građevinar je osnovan 1989. godine i od tada radimo kao generalni izvođač za industrijske, komercijalne i rezidencijalne objekte. Kroz sve to vreme držimo se istog principa: jedan ugovor, jedna odgovornost, jedan rok koji ispunimo.</p>
-          <p>Ne prepuštamo kvalitet slučaju. Svaki objekat prolazi kroz iste kontrole, bez obzira da li gradimo fabriku, poslovnu zgradu ili stambeni kompleks.</p>
-          <div class="about-facts">
-            <div class="fact">
-              <strong>1989.</strong>
-              <span>Godina osnivanja</span>
-            </div>
-            <div class="fact">
-              <strong>300+</strong>
-              <span>Realizovanih projekata</span>
-            </div>
-            <div class="fact">
-              <strong>1.000.000+ m²</strong>
-              <span>Izgrađene površine</span>
-            </div>
+      <div class="head rv">
+        <span class="tag">Zašto Građevinar</span>
+        <h2>Šta investitor dobija kad gradi sa nama</h2>
+        <p>Ne obećavamo, nego pokazujemo. Svaka tvrdnja ispod ima ime projekta iza sebe.</p>
+      </div>
+
+      <div class="bento">
+        <article class="b b-1 rv">
+          <svg class="gauge" viewBox="0 0 100 100" aria-hidden="true"><circle class="g0" cx="50" cy="50" r="46"/><circle class="g1" cx="50" cy="50" r="46" pathLength="1"/></svg>
+          <div class="big">6<small>meseci</small></div>
+          <div>
+            <h3>Za halu od 25.000 m²</h3>
+            <p>Toliko nam je trebalo da završimo objekat Delphi Packard u Novom Sadu, po specifičnim zahtevima investitora. Rok iz ugovora za nas nije okvirna procena.</p>
+            <span class="src">Delphi Packard · Novi Sad · 2016</span>
           </div>
-        </div>
-        <div class="about-media reveal">
-          FOTOGRAFIJA TIMA GRAĐEVINAR NA GRADILIŠTU
-        </div>
+        </article>
+        <article class="b b-2 rv">
+          <div class="big">130+</div>
+          <div>
+            <h3>Prodavnica za jednog investitora</h3>
+            <p>Za Delhaize Serbia smo tokom 15 godina rekonstruisali i izgradili više od 130 maloprodajnih objekata. Investitori se vraćaju.</p>
+          </div>
+        </article>
+        <article class="b b-3 rv">
+          <div class="big">EU tender</div>
+          <div>
+            <h3>Izabrani za Ambasadu SR Nemačke</h3>
+            <p>Na evropskom tenderu za generalnog izvođača posao je dobio Građevinar. Zgradu od 5.000 m² u Kneza Miloša predali smo 2020.</p>
+          </div>
+        </article>
+        <article class="b b-4 rv">
+          <div class="big">GMP</div>
+          <div>
+            <h3>Farmaceutski standardi</h3>
+            <p>Pogoni za Zdravlje Actavis po GMP standardu i čiste sobe ISO 5 i ISO 8 za West Pharmaceutical.</p>
+          </div>
+        </article>
+        <article class="b b-5 rv">
+          <div class="big">1989</div>
+          <div>
+            <h3>Domaći propisi</h3>
+            <p>Od osnivanja radimo samo u Srbiji. Znamo propise, poslovni ambijent i put do upotrebne dozvole.</p>
+          </div>
+        </article>
+        <article class="b b-6 rv">
+          <div class="big">3 × ISO</div>
+          <div>
+            <h3>Kvalitet, okolina, bezbednost</h3>
+            <p>Sertifikovani sistemi ISO 9001, ISO 14001 i ISO 45001, po kojima radi cela firma.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- UTISCI / DOKAZI -->
-  <section class="section-pad stats-section" id="utisci">
+  <!-- MAPA -->
+  <section class="sec" id="mapa">
+    <div class="wrap map-grid">
+      <div class="map-wrap rv">
+        <svg class="map-svg" viewBox="-20 -20 440 612" role="img" aria-labelledby="mapTitle">
+          <title id="mapTitle">Mapa Srbije sa gradovima u kojima je Građevinar gradio</title>
+          <g>
+            <path class="edge" d="M367.4,256.8 364.0,259.0 360.3,262.5 357.9,268.4 357.6,277.9 345.4,285.4 340.6,287.0 338.6,291.8 335.6,305.8 335.9,316.5 337.6,321.7 338.3,326.3 342.3,331.5 345.7,339.9 348.1,350.8 353.5,359.2 366.7,367.6 373.5,372.4 378.2,379.4 382.0,385.6 393.2,394.2 392.1,400.1 389.8,406.0 387.4,408.7 382.0,416.2 376.5,420.5 367.7,433.9 353.8,434.6 350.5,435.8 345.0,439.4 342.7,446.0 345.0,451.2 344.7,456.7 342.3,467.1 345.7,478.5 350.5,483.7 351.1,486.6 350.5,491.9 343.0,502.5 341.0,506.4 333.5,508.4 331.1,507.5 327.4,503.7 323.7,502.8 314.9,507.1 306.1,509.6 299.0,507.5 292.2,507.3 287.4,509.1 283.7,509.8 276.6,514.6 265.4,517.8 260.0,517.1 258.0,512.8 255.9,506.6 256.9,503.7 264.4,498.9 265.4,494.1 275.9,471.6 277.9,464.4 277.9,461.9 275.2,460.3 269.5,460.3 243.7,451.2 245.1,440.8 237.6,435.1 229.5,430.1 228.1,424.4 219.0,413.0 212.6,406.7 204.1,403.5 196.6,398.7 192.6,396.0 190.5,390.8 190.5,387.6 188.2,384.4 184.8,384.9 179.0,389.0 171.6,392.6 170.2,395.3 172.9,401.7 174.9,405.6 173.9,409.4 171.6,414.2 157.7,424.9 156.0,428.5 158.7,434.4 157.0,437.3 145.5,441.2 145.8,438.0 144.8,432.8 138.4,427.1 128.9,422.8 107.5,408.0 99.7,406.0 92.3,404.4 82.1,397.1 76.7,396.0 70.6,391.0 57.7,373.8 46.9,364.4 39.4,359.9 37.4,355.1 36.7,350.6 37.0,349.0 42.8,342.2 47.2,341.3 52.6,341.0 56.4,344.5 61.4,345.1 64.2,340.8 65.5,334.7 64.8,326.7 53.0,308.1 43.1,295.2 41.8,292.4 44.2,289.9 47.5,288.8 51.3,289.7 61.1,290.6 70.6,289.5 73.6,286.3 73.6,282.2 70.2,278.1 59.4,267.7 50.6,258.4 40.8,251.1 33.0,248.4 30.9,244.7 29.9,240.6 30.9,233.6 31.3,224.5 33.0,218.8 39.8,208.2 46.2,196.6 50.3,185.7 52.3,175.5 51.6,172.5 48.2,170.5 41.1,168.2 31.3,170.2 22.8,173.9 19.4,174.1 18.4,169.6 19.8,167.5 22.5,167.7 24.5,168.6 26.9,166.6 28.2,160.5 24.8,139.1 30.9,137.1 31.3,134.1 31.6,131.4 38.1,135.0 47.2,135.0 55.3,134.3 56.7,132.3 56.4,129.1 54.7,126.9 52.0,124.8 49.9,121.9 44.5,120.7 27.6,113.0 19.4,104.8 19.4,96.0 21.8,91.2 24.8,89.6 24.2,88.0 14.3,83.9 11.0,78.5 14.0,71.2 8.9,56.7 3.8,47.6 8.9,43.7 9.6,38.3 9.9,35.1 12.0,35.1 20.4,31.5 23.2,28.5 25.2,24.9 26.9,24.0 32.6,27.8 38.4,28.3 44.8,25.8 49.9,22.4 55.7,19.6 58.4,17.8 61.8,14.6 68.9,5.8 76.7,4.0 86.9,6.2 98.4,7.2 106.8,5.1 128.2,7.6 132.6,9.7 135.6,11.9 141.4,19.6 146.8,29.4 154.3,34.0 163.1,39.4 167.5,43.3 174.3,55.1 179.7,60.8 181.4,60.5 183.1,58.9 184.4,57.8 185.8,58.9 185.8,62.6 186.1,70.3 185.1,78.9 186.8,86.9 186.8,89.4 185.8,91.6 185.8,93.7 187.8,95.7 194.9,101.0 201.7,109.1 209.2,115.0 216.6,118.7 221.0,118.9 228.5,125.5 243.1,130.3 247.8,131.9 250.8,134.6 253.2,137.8 253.2,140.9 251.2,142.5 247.8,147.1 246.8,152.7 244.4,154.1 242.0,154.1 240.3,155.9 240.7,158.2 242.7,160.5 245.8,162.5 251.5,164.6 257.3,167.7 257.3,170.0 255.9,172.5 248.8,173.6 243.4,174.1 240.7,175.0 241.0,179.8 256.3,184.5 263.4,189.1 266.8,195.0 276.6,198.9 292.5,200.7 303.7,206.8 309.8,217.0 320.0,214.5 334.2,199.3 348.1,195.4 361.6,202.7 369.1,208.6 370.4,213.2 367.1,215.2 359.6,214.3 353.2,217.3 348.4,223.8 347.7,230.9 351.1,238.4 355.9,243.6 362.3,246.6 365.4,250.4 366.0,255.4 367.4,256.8Z"/>
+            <path class="edge" d="M145.5,441.2 157.0,437.3 158.7,434.4 156.0,428.5 157.7,424.9 171.6,414.2 173.9,409.4 174.9,405.6 172.9,401.7 170.2,395.3 171.6,392.6 179.0,389.0 184.8,384.9 188.2,384.4 190.5,387.6 190.5,390.8 192.6,396.0 196.6,398.7 204.1,403.5 212.6,406.7 219.0,413.0 228.1,424.4 229.5,430.1 237.6,435.1 245.1,440.8 243.7,451.2 269.5,460.3 275.2,460.3 277.9,461.9 277.9,464.4 275.9,471.6 265.4,494.1 264.4,498.9 256.9,503.7 255.9,506.6 258.0,512.8 260.0,517.1 243.7,520.7 238.3,525.0 234.9,532.5 233.9,536.4 231.2,536.6 226.4,532.7 220.3,526.6 212.6,527.1 186.1,540.2 183.4,547.1 183.1,562.0 181.0,566.1 178.3,568.6 167.5,567.0 166.1,566.1 167.8,560.2 167.2,547.7 162.1,527.1 158.7,520.3 151.2,513.4 145.8,509.1 135.6,505.3 130.6,493.9 122.8,481.0 119.0,478.0 119.7,476.6 121.4,466.9 119.0,459.8 115.7,453.7 118.0,450.1 125.1,450.1 130.9,450.8 133.3,445.1 145.5,441.2Z"/>
+            <path class="land" d="M367.4,256.8 364.0,259.0 360.3,262.5 357.9,268.4 357.6,277.9 345.4,285.4 340.6,287.0 338.6,291.8 335.6,305.8 335.9,316.5 337.6,321.7 338.3,326.3 342.3,331.5 345.7,339.9 348.1,350.8 353.5,359.2 366.7,367.6 373.5,372.4 378.2,379.4 382.0,385.6 393.2,394.2 392.1,400.1 389.8,406.0 387.4,408.7 382.0,416.2 376.5,420.5 367.7,433.9 353.8,434.6 350.5,435.8 345.0,439.4 342.7,446.0 345.0,451.2 344.7,456.7 342.3,467.1 345.7,478.5 350.5,483.7 351.1,486.6 350.5,491.9 343.0,502.5 341.0,506.4 333.5,508.4 331.1,507.5 327.4,503.7 323.7,502.8 314.9,507.1 306.1,509.6 299.0,507.5 292.2,507.3 287.4,509.1 283.7,509.8 276.6,514.6 265.4,517.8 260.0,517.1 258.0,512.8 255.9,506.6 256.9,503.7 264.4,498.9 265.4,494.1 275.9,471.6 277.9,464.4 277.9,461.9 275.2,460.3 269.5,460.3 243.7,451.2 245.1,440.8 237.6,435.1 229.5,430.1 228.1,424.4 219.0,413.0 212.6,406.7 204.1,403.5 196.6,398.7 192.6,396.0 190.5,390.8 190.5,387.6 188.2,384.4 184.8,384.9 179.0,389.0 171.6,392.6 170.2,395.3 172.9,401.7 174.9,405.6 173.9,409.4 171.6,414.2 157.7,424.9 156.0,428.5 158.7,434.4 157.0,437.3 145.5,441.2 145.8,438.0 144.8,432.8 138.4,427.1 128.9,422.8 107.5,408.0 99.7,406.0 92.3,404.4 82.1,397.1 76.7,396.0 70.6,391.0 57.7,373.8 46.9,364.4 39.4,359.9 37.4,355.1 36.7,350.6 37.0,349.0 42.8,342.2 47.2,341.3 52.6,341.0 56.4,344.5 61.4,345.1 64.2,340.8 65.5,334.7 64.8,326.7 53.0,308.1 43.1,295.2 41.8,292.4 44.2,289.9 47.5,288.8 51.3,289.7 61.1,290.6 70.6,289.5 73.6,286.3 73.6,282.2 70.2,278.1 59.4,267.7 50.6,258.4 40.8,251.1 33.0,248.4 30.9,244.7 29.9,240.6 30.9,233.6 31.3,224.5 33.0,218.8 39.8,208.2 46.2,196.6 50.3,185.7 52.3,175.5 51.6,172.5 48.2,170.5 41.1,168.2 31.3,170.2 22.8,173.9 19.4,174.1 18.4,169.6 19.8,167.5 22.5,167.7 24.5,168.6 26.9,166.6 28.2,160.5 24.8,139.1 30.9,137.1 31.3,134.1 31.6,131.4 38.1,135.0 47.2,135.0 55.3,134.3 56.7,132.3 56.4,129.1 54.7,126.9 52.0,124.8 49.9,121.9 44.5,120.7 27.6,113.0 19.4,104.8 19.4,96.0 21.8,91.2 24.8,89.6 24.2,88.0 14.3,83.9 11.0,78.5 14.0,71.2 8.9,56.7 3.8,47.6 8.9,43.7 9.6,38.3 9.9,35.1 12.0,35.1 20.4,31.5 23.2,28.5 25.2,24.9 26.9,24.0 32.6,27.8 38.4,28.3 44.8,25.8 49.9,22.4 55.7,19.6 58.4,17.8 61.8,14.6 68.9,5.8 76.7,4.0 86.9,6.2 98.4,7.2 106.8,5.1 128.2,7.6 132.6,9.7 135.6,11.9 141.4,19.6 146.8,29.4 154.3,34.0 163.1,39.4 167.5,43.3 174.3,55.1 179.7,60.8 181.4,60.5 183.1,58.9 184.4,57.8 185.8,58.9 185.8,62.6 186.1,70.3 185.1,78.9 186.8,86.9 186.8,89.4 185.8,91.6 185.8,93.7 187.8,95.7 194.9,101.0 201.7,109.1 209.2,115.0 216.6,118.7 221.0,118.9 228.5,125.5 243.1,130.3 247.8,131.9 250.8,134.6 253.2,137.8 253.2,140.9 251.2,142.5 247.8,147.1 246.8,152.7 244.4,154.1 242.0,154.1 240.3,155.9 240.7,158.2 242.7,160.5 245.8,162.5 251.5,164.6 257.3,167.7 257.3,170.0 255.9,172.5 248.8,173.6 243.4,174.1 240.7,175.0 241.0,179.8 256.3,184.5 263.4,189.1 266.8,195.0 276.6,198.9 292.5,200.7 303.7,206.8 309.8,217.0 320.0,214.5 334.2,199.3 348.1,195.4 361.6,202.7 369.1,208.6 370.4,213.2 367.1,215.2 359.6,214.3 353.2,217.3 348.4,223.8 347.7,230.9 351.1,238.4 355.9,243.6 362.3,246.6 365.4,250.4 366.0,255.4 367.4,256.8Z"/>
+            <path class="land" d="M145.5,441.2 157.0,437.3 158.7,434.4 156.0,428.5 157.7,424.9 171.6,414.2 173.9,409.4 174.9,405.6 172.9,401.7 170.2,395.3 171.6,392.6 179.0,389.0 184.8,384.9 188.2,384.4 190.5,387.6 190.5,390.8 192.6,396.0 196.6,398.7 204.1,403.5 212.6,406.7 219.0,413.0 228.1,424.4 229.5,430.1 237.6,435.1 245.1,440.8 243.7,451.2 269.5,460.3 275.2,460.3 277.9,461.9 277.9,464.4 275.9,471.6 265.4,494.1 264.4,498.9 256.9,503.7 255.9,506.6 258.0,512.8 260.0,517.1 243.7,520.7 238.3,525.0 234.9,532.5 233.9,536.4 231.2,536.6 226.4,532.7 220.3,526.6 212.6,527.1 186.1,540.2 183.4,547.1 183.1,562.0 181.0,566.1 178.3,568.6 167.5,567.0 166.1,566.1 167.8,560.2 167.2,547.7 162.1,527.1 158.7,520.3 151.2,513.4 145.8,509.1 135.6,505.3 130.6,493.9 122.8,481.0 119.0,478.0 119.7,476.6 121.4,466.9 119.0,459.8 115.7,453.7 118.0,450.1 125.1,450.1 130.9,450.8 133.3,445.1 145.5,441.2Z"/>
+          </g>
+          <g id="pins">
+            <g class="pin" data-city="novi-sad" style="--dl:.2s"><circle class="ring" cx="98" cy="123" r="7"/><circle class="dot" cx="98" cy="123" r="6"/><text x="110" y="119">Novi Sad</text></g>
+            <g class="pin" data-city="stara-pazova" style="--dl:.8s"><circle class="ring" cx="128" cy="160" r="7"/><circle class="dot" cx="128" cy="160" r="6"/><text x="46" y="150">Stara Pazova</text></g>
+            <g class="pin hq" data-city="beograd" style="--dl:0s"><circle class="ring" cx="156" cy="182" r="7"/><circle class="dot" cx="156" cy="182" r="7"/><text x="168" y="186">Beograd</text></g>
+            <g class="pin" data-city="kragujevac" style="--dl:1.4s"><circle class="ring" cx="199" cy="287" r="7"/><circle class="dot" cx="199" cy="287" r="6"/><text x="150" y="272">Kragujevac</text></g>
+            <g class="pin" data-city="jagodina" style="--dl:1s"><circle class="ring" cx="232" cy="291" r="7"/><circle class="dot" cx="232" cy="291" r="6"/><text x="244" y="295">Jagodina</text></g>
+            <g class="pin" data-city="cacak" style="--dl:.4s"><circle class="ring" cx="146" cy="302" r="7"/><circle class="dot" cx="146" cy="302" r="6"/><text x="92" y="322">Čačak</text></g>
+            <g class="pin" data-city="nis" style="--dl:1.8s"><circle class="ring" cx="292" cy="377" r="7"/><circle class="dot" cx="292" cy="377" r="6"/><text x="304" y="381">Niš</text></g>
+            <g class="pin" data-city="leskovac" style="--dl:.6s"><circle class="ring" cx="297" cy="420" r="7"/><circle class="dot" cx="297" cy="420" r="6"/><text x="309" y="424">Leskovac</text></g>
+            <g class="pin" data-city="vranje" style="--dl:1.2s"><circle class="ring" cx="292" cy="478" r="7"/><circle class="dot" cx="292" cy="478" r="6"/><text x="304" y="482">Vranje</text></g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="rv">
+        <div class="head">
+          <span class="tag">Gde gradimo</span>
+          <h2>Od Novog Sada do Vranja</h2>
+          <p>Radimo isključivo u Srbiji. Na mapi su gradovi iz izdvojenih referenci, a sedište je u Beogradu.</p>
+        </div>
+        <div class="map-total">
+          <b><span data-count="383700">383.700</span>+ m²</b>
+          <span>Ukupna površina samo 18 izdvojenih referenci</span>
+        </div>
+        <ul class="cities" id="cities">
+          <li><button type="button" data-city="beograd"><b>Beograd</b><span>Ambasada SR Nemačke, Goethe-Institut, Nemačka škola</span></button></li>
+          <li><button type="button" data-city="kragujevac"><b>Kragujevac</b><span>Wacker Neuson, HT&amp;L Fitting</span></button></li>
+          <li><button type="button" data-city="novi-sad"><b>Novi Sad</b><span>Delphi Packard, MPZ Agrar</span></button></li>
+          <li><button type="button" data-city="cacak"><b>Čačak</b><span>Vorwerk &amp; Sohn, 45.000 m²</span></button></li>
+          <li><button type="button" data-city="stara-pazova"><b>Stara Pazova</b><span>Muehlbauer Automation</span></button></li>
+          <li><button type="button" data-city="leskovac"><b>Leskovac</b><span>Aptiv, 30.000 m²</span></button></li>
+          <li><button type="button" data-city="nis"><b>Niš</b><span>Benetton Serbia</span></button></li>
+          <li><button type="button" data-city="vranje"><b>Vranje</b><span>Ditre Italia · Top Sofa</span></button></li>
+          <li><button type="button" data-city="jagodina"><b>Jagodina</b><span>Omega Agro Group, Slatina</span></button></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ISTORIJA -->
+  <section class="sec paper" id="istorija">
     <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Brojke i klijenti</span>
-        <h2>35 godina rada, u brojkama</h2>
-      </div>
-
-      <div class="stats-grid">
-        <div class="stat-card reveal">
-          <strong>300+</strong>
-          <span>Realizovanih projekata</span>
+      <div class="head-row">
+        <div class="head rv">
+          <span class="tag">Istorija</span>
+          <h2>37 godina, projekat po projekat</h2>
         </div>
-        <div class="stat-card reveal">
-          <strong>1.000.000+ m²</strong>
-          <span>Izgrađene površine</span>
-        </div>
-        <div class="stat-card reveal">
-          <strong>1989.</strong>
-          <span>Godina kada smo počeli da gradimo</span>
+        <div class="hist-nav">
+          <button type="button" id="histPrev" aria-label="Prethodne godine"><svg viewBox="0 0 24 24"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button>
+          <button type="button" id="histNext" aria-label="Sledeće godine"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
         </div>
       </div>
 
-      <div class="clients-row reveal">
-        <p class="label">Rade sa nama</p>
-        <div class="clients-list">
-          <span class="client-badge">Muehlbauer Group</span>
-          <span class="client-badge">Wacker Neuson</span>
-          <span class="client-badge">Vorwerk & Sohn</span>
-        </div>
-      </div>
+      <ol class="hist" id="hist">
+        <li class="big"><span class="yr">1989</span><h3>Osnivanje u Beogradu</h3><p>Jedno od prvih privatnih preduzeća iz oblasti građevinarstva.</p></li>
+        <li><span class="yr">1990</span><h3>Počinje saradnja sa Delhaize</h3><p>Za 15 godina više od 130 maloprodajnih objekata, preko 90.000 m².</p></li>
+        <li><span class="yr">2003</span><h3>Zdravlje Actavis</h3><p>Deset godina pogona za lekove po GMP standardu.</p></li>
+        <li><span class="yr">2011</span><h3>Benetton i HT&amp;L</h3><p>Pogoni u Nišu i Kragujevcu, zajedno preko 56.000 m².</p></li>
+        <li><span class="yr">2014</span><h3>Nemačka škola</h3><p>Novo krilo sa fiskulturnom salom, pod nadzorom stručnjaka iz Nemačke.</p></li>
+        <li><span class="yr">2015</span><h3>Goethe-Institut</h3><p>Kompletna rekonstrukcija po projektu iz Nemačke.</p></li>
+        <li class="big"><span class="yr">2016</span><h3>Delphi Packard za 6 meseci</h3><p>25.000 m² u Novom Sadu, rekordan rok.</p></li>
+        <li><span class="yr">2018</span><h3>Aptiv i Ambasada</h3><p>Fabrika od 30.000 m² u Leskovcu i početak gradnje Ambasade SR Nemačke.</p></li>
+        <li><span class="yr">2019</span><h3>Vorwerk &amp; Sohn</h3><p>Kompleks od 45.000 m² u Čačku.</p></li>
+        <li><span class="yr">2022</span><h3>Wacker Neuson</h3><p>27.000 m² u Kragujevcu, od januara do oktobra.</p></li>
+        <li class="big"><span class="yr">2025</span><h3>Muehlbauer Automation</h3><p>Fabrika u Staroj Pazovi i nagrada za životno delo u preduzetništvu.</p></li>
+        <li><span class="yr">2026</span><h3>Treća petoletka i Omega</h3><p>Kompleks od 22.500 m² i hladnjača od 1.000 tona.</p></li>
+      </ol>
     </div>
   </section>
 
-  <!-- KONTAKT / CTA -->
-  <section class="section-pad contact-section" id="kontakt">
+  <!-- SERTIFIKATI -->
+  <section class="sec dark cert-sec" id="sertifikati">
     <div class="wrap">
-      <div class="contact-grid">
-        <div class="contact-intro reveal">
-          <h2>Spreman da pokreneš svoj projekat?</h2>
-          <p>Pošalji nam osnovne podatke o projektu i javljamo se sa ponudom i realnim rokom izgradnje.</p>
+      <div class="head rv">
+        <span class="tag">Sertifikati i licence</span>
+        <h2>Sertifikovani sistemi, licencirani radovi</h2>
+        <p>Sistemi upravljanja kvalitetom, životnom sredinom i bezbednošću na radu važe za svaki naš projekat, ne samo za papir.</p>
+      </div>
 
-          <div class="contact-info-list">
-            <div class="contact-info-item">
-              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-              <div>
-                <strong>Email</strong>
-                <span>info@gradjevinar.rs</span>
-              </div>
-            </div>
-            <div class="contact-info-item">
-              <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-              <div>
-                <strong>Sedište</strong>
-                <span>Srbija</span>
-              </div>
-            </div>
-            <div class="contact-info-item">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-              <div>
-                <strong>Odgovaramo</strong>
-                <span>Tokom radnog dana</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <form class="contact-form reveal" action="#" onsubmit="return false;">
-          <h3>Zatraži ponudu</h3>
-          <div class="form-row">
-            <div>
-              <label for="ime">Ime i prezime</label>
-              <input type="text" id="ime" name="ime" placeholder="Marko Marković" required>
-            </div>
-            <div>
-              <label for="telefon">Telefon</label>
-              <input type="tel" id="telefon" name="telefon" placeholder="06X XXX XXXX">
-            </div>
-          </div>
-          <div class="form-row">
-            <div style="grid-column: 1 / -1;">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="marko@firma.rs" required>
-            </div>
-          </div>
-          <label for="poruka">Opis projekta</label>
-          <textarea id="poruka" name="poruka" placeholder="Vrsta objekta, lokacija, okvirni rok..."></textarea>
-          <button type="submit" class="btn btn-primary">Pošalji upit i zatraži ponudu</button>
-        </form>
+      <div class="cert-grid">
+        <article class="cert rv">
+          <svg class="cert-seal" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><circle cx="32" cy="32" r="24" stroke-dasharray="2 3"/><path d="m22 32 7 7 13-14"/></svg>
+          <h3>ISO 9001</h3>
+          <p>Sistem menadžmenta kvalitetom (QMS)</p>
+          <div class="no">ISO 9001:2015 · <b>00.12.3045</b></div>
+        </article>
+        <article class="cert rv">
+          <svg class="cert-seal" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><circle cx="32" cy="32" r="24" stroke-dasharray="2 3"/><path d="M32 44V28M32 36c-8 0-10-6-10-10 6 0 10 2 10 10Zm0-4c0-6 4-10 10-10 0 6-4 10-10 10Z"/></svg>
+          <h3>ISO 14001</h3>
+          <p>Upravljanje zaštitom životne sredine (EMS)</p>
+          <div class="no">ISO 14001:2015 · <b>00.02.1909</b></div>
+        </article>
+        <article class="cert rv">
+          <svg class="cert-seal" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><circle cx="32" cy="32" r="24" stroke-dasharray="2 3"/><path d="M20 38h24M22 38a10 10 0 0 1 20 0M32 28v-4M29 24h6"/></svg>
+          <h3>ISO 45001</h3>
+          <p>Zdravlje i bezbednost na radu (OH&amp;S)</p>
+          <div class="no">ISO 45001:2018 · <b>00.05.1226</b></div>
+        </article>
+        <article class="cert rv">
+          <svg class="cert-seal" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><circle cx="32" cy="32" r="24" stroke-dasharray="2 3"/><path d="M23 20h14l5 5v19H23zM37 20v5h5M27 31h10M27 36h10"/></svg>
+          <h3>Licence</h3>
+          <p>Izdaje Ministarstvo građevinarstva, saobraćaja i infrastrukture.</p>
+          <div class="no"><b>I040G1</b> · <b>I092A2</b></div>
+        </article>
       </div>
     </div>
   </section>
+
+  <!-- AKTUELNO -->
+  <section class="sec" id="aktuelno">
+    <div class="wrap">
+      <div class="head rv">
+        <span class="tag">Aktuelno</span>
+        <h2>Najnoviji predat objekat</h2>
+      </div>
+
+      <div class="news-grid">
+        <article class="feature rv">
+          <div class="feature-img">
+            <img src="assets/omega-hladnjaca.jpg" alt="Završena hladnjača Omega Agro Group u Slatini kod Jagodine, pogled iz vazduha" loading="lazy" width="1400" height="875">
+            <span class="badge-live"><i></i>Završeno · avgust 2026</span>
+          </div>
+          <div class="feature-body">
+            <h3>Hladnjača za Omega Agro Group</h3>
+            <p>Savremena hladnjača za sortiranje i pakovanje stonog grožđa u Slatini kod Jagodine. Kao generalni izvođač radili smo sve arhitektonsko-građevinske radove, elektro i mašinske instalacije i kompletnu nabavku i ugradnju opreme za hlađenje, sortiranje i pakovanje.</p>
+            <div class="feature-facts">
+              <div><b>3.000 m²</b><span>Površina</span></div>
+              <div><b>1.000 t</b><span>Kapacitet</span></div>
+              <div><b>5 meseci</b><span>Mart → avgust</span></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="news-side rv">
+          <h3>Novosti</h3>
+          <ul class="news-list">
+            <li><a href="https://gradjevinar.rs/novosti/zavrsetak-izgradnje-savremene-hladnjace-za-kompaniju-omega-agro-group/" target="_blank" rel="noopener">
+              <div><time datetime="2026-08-21">21.08.2026.</time><strong>Završena izgradnja savremene hladnjače za Omega Agro Group</strong></div>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
+            <li><a href="https://gradjevinar.rs/novosti/potpisan-ugovor-za-izgradnju-savremene-hladnjace-sa-omega-agro-group/" target="_blank" rel="noopener">
+              <div><time datetime="2026-03-17">17.03.2026.</time><strong>Potpisan ugovor o izgradnji hladnjače sa Omega Agro Group</strong></div>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
+            <li><a href="https://gradjevinar.rs/novosti/prestizna-nagrada-za-zivotno-delo-u-preduzetnistvu/" target="_blank" rel="noopener">
+              <div><time datetime="2025-10-18">18.10.2025.</time><strong>Prestižna nagrada za životno delo u preduzetništvu</strong></div>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
+            <li><a href="https://gradjevinar.rs/novosti/zavrsetak-izgradnje-fabrike-muehlbauer-automation-u-staroj-pazovi/" target="_blank" rel="noopener">
+              <div><time datetime="2025-09-22">22.09.2025.</time><strong>Završena fabrika Muehlbauer Automation u Staroj Pazovi</strong></div>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec paper" id="pitanja">
+    <div class="wrap faq-grid">
+      <div class="faq-side">
+        <div class="head rv">
+          <span class="tag">Pitanja</span>
+          <h2>Pre nego što nam pišeš</h2>
+          <p>Odgovori na ono što investitori najčešće pitaju pre prvog sastanka.</p>
+        </div>
+        <a href="#kontakt" class="link">Imaš drugo pitanje? Piši nam
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="faq rv">
+        <details open>
+          <summary>Šta tačno znači „ključ u ruke”?<i aria-hidden="true"></i></summary>
+          <div class="ans">
+            <p>Jedan ugovor pokriva ceo posao: projektovanje, arhitektonsko-građevinske radove, elektro i mašinske instalacije, nabavku i ugradnju opreme i upotrebnu dozvolu. Mi smo generalni izvođač i odgovaramo za sve.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Koliko traje izgradnja industrijskog objekta?<i aria-hidden="true"></i></summary>
+          <div class="ans">
+            <p>Zavisi od objekta i zahteva investitora. Za orijentir: halu Delphi Packard od 25.000 m² završili smo za šest meseci, fabriku Wacker Neuson od 27.000 m² za deset, a Muehlbauer Automation od 12.000 m² na tri etaže za jedanaest meseci.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Da li radite rekonstrukcije postojećih objekata?<i aria-hidden="true"></i></summary>
+          <div class="ans">
+            <p>Da. Rekonstruisali smo i proširivali pogone Benettona u Nišu i Zdravlja Actavis, Goethe-Institut i Nemačku školu u Beogradu i više od 130 prodavnica za Delhaize.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Možete li da ispoštujete standarde stranog investitora?<i aria-hidden="true"></i></summary>
+          <div class="ans">
+            <p>To radimo najčešće. Muehlbauer Automation smo gradili po standardima te kompanije, Nemačku školu pod nadzorom stručnjaka iz Nemačke, pogone Zdravlja Actavis po GMP standardu, a za West Pharmaceutical čiste sobe klase ISO 5 i ISO 8.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Gde gradite?<i aria-hidden="true"></i></summary>
+          <div class="ans">
+            <p>Isključivo u Srbiji. Gradili smo od Novog Sada i Stare Pazove do Niša, Leskovca i Vranja. Sedište je u Beogradu, u ulici Gavrila Principa 40.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Šta da pošaljem uz upit za ponudu?<i aria-hidden="true"></i></summary>
+          <div class="ans">
+            <p>Vrstu objekta, okvirnu površinu, lokaciju i rok koji ti treba. Ako već imaš projekat ili idejno rešenje, pomeni ga u poruci. Na osnovu toga se javljamo sa sledećim korakom.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="sec dark contact" id="kontakt">
+    <div class="wrap contact-grid">
+      <div class="rv">
+        <span class="tag" style="margin-bottom:20px">Kontakt</span>
+        <h2>Imaš parcelu i plan? Hajde da ga izgradimo.</h2>
+        <p class="intro">Pošalji osnovne podatke o objektu i javljamo se sa sledećim korakom ka ponudi.</p>
+        <ul class="cinfo">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+            <div><small>Telefon</small><a href="tel:+381113446615">+381 11 344 66 15</a><em>Faks +381 11 344 70 19</em></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="m3 7 9 6 9-6"/></svg>
+            <div><small>Email</small><a href="mailto:office@gradjevinar.rs">office@gradjevinar.rs</a></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <div><small>Sedište</small><span>Gavrila Principa 40, 11000 Beograd</span><em>Savski venac, preko puta Ekonomskog fakulteta</em></div>
+          </li>
+        </ul>
+        <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Gavrila+Principa+40%2C+11000+Beograd" target="_blank" rel="noopener">Otvori sedište u Google mapama
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+
+      <form class="form rv" id="form" novalidate>
+        <h3>Upit za ponudu</h3>
+        <p>Polja sa zvezdicom su obavezna.</p>
+        <div class="frow">
+          <div class="field">
+            <label for="f-ime">Ime i prezime *</label>
+            <input id="f-ime" name="ime" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-firma">Kompanija</label>
+            <input id="f-firma" name="firma" type="text" autocomplete="organization">
+          </div>
+        </div>
+        <div class="frow">
+          <div class="field">
+            <label for="f-email">Email *</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-tel">Telefon</label>
+            <input id="f-tel" name="telefon" type="tel" autocomplete="tel">
+          </div>
+        </div>
+        <div class="frow">
+          <fieldset class="field full">
+            <legend>Vrsta objekta</legend>
+            <div class="types">
+              <label><input type="radio" name="tip" value="Industrijski objekat" checked><span>Industrijski</span></label>
+              <label><input type="radio" name="tip" value="Poslovni objekat"><span>Poslovni</span></label>
+              <label><input type="radio" name="tip" value="Stambeni objekat"><span>Stambeni</span></label>
+              <label><input type="radio" name="tip" value="Rekonstrukcija"><span>Rekonstrukcija</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="frow">
+          <div class="field">
+            <label for="f-povrsina">Okvirna površina (m²)</label>
+            <input id="f-povrsina" name="povrsina" type="text" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="f-lokacija">Lokacija</label>
+            <input id="f-lokacija" name="lokacija" type="text">
+          </div>
+        </div>
+        <div class="frow">
+          <div class="field full">
+            <label for="f-poruka">Opis projekta *</label>
+            <textarea id="f-poruka" name="poruka" required placeholder="Namena objekta, rok, da li već imaš projekat..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn has-arrow">Pošalji upit za ponudu
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="form-note" id="formNote" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  </main>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <div class="footer-brand">
-        <img src="assets/logo.svg" alt="Građevinar - logo kompanije">
-        <p>Generalni izvođač za industrijske, komercijalne i rezidencijalne objekte, po sistemu ključ u ruke, od 1989. godine.</p>
+  <footer class="footer">
+    <div class="wrap f-top">
+      <div class="f-brand">
+        <img src="assets/logo.svg" alt="Građevinar logo" width="168" height="40">
+        <p>Generalni izvođač za industrijske, poslovne i stambene objekte po sistemu ključ u ruke, od 1989. godine.</p>
       </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <h4>Sajt</h4>
-          <a href="#usluge">Usluge</a>
-          <a href="#referentni-projekti">Referentni projekti</a>
-          <a href="#sertifikati">Sertifikati</a>
-          <a href="#o-nama">O nama</a>
-        </div>
-        <div class="footer-col">
-          <h4>Kontakt</h4>
-          <a href="#kontakt">Zatraži ponudu</a>
-          <a href="mailto:info@gradjevinar.rs">info@gradjevinar.rs</a>
-        </div>
+      <div class="f-col">
+        <h4>Kompanija</h4>
+        <a href="#kompanija">O nama</a>
+        <a href="#istorija">Istorija</a>
+        <a href="#sertifikati">Sertifikati i licence</a>
+        <a href="#aktuelno">Aktuelno</a>
+      </div>
+      <div class="f-col">
+        <h4>Rad</h4>
+        <a href="#usluge">Usluge</a>
+        <a href="#proces">Kako radimo</a>
+        <a href="#reference">Reference</a>
+        <a href="#pitanja">Pitanja</a>
+      </div>
+      <div class="f-col">
+        <h4>Kontakt</h4>
+        <a href="tel:+381113446615">+381 11 344 66 15</a>
+        <a href="mailto:office@gradjevinar.rs">office@gradjevinar.rs</a>
+        <span>Gavrila Principa 40<br>11000 Beograd</span>
       </div>
     </div>
-    <div class="wrap footer-bottom">
+    <div class="wrap f-bottom">
       <span>© 2026 Građevinar d.o.o. Sva prava zadržana.</span>
-      <span>Licence I040G1 · I092A2</span>
+      <span>ISO 9001 · ISO 14001 · ISO 45001 · Licence I040G1, I092A2</span>
     </div>
   </footer>
 
-  <script>
-    // Hamburger meni
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
+<script>
+(function(){
+  var motion = document.documentElement.classList.contains('motion');
 
-    hamburgerBtn.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.toggle('open');
-      hamburgerBtn.classList.toggle('active', isOpen);
-      hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
+  /* Meni */
+  var burger = document.getElementById('burger');
+  var mnav = document.getElementById('mnav');
+  function closeMenu(){
+    mnav.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Otvori meni');
+  }
+  burger.addEventListener('click', function(){
+    var open = mnav.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Zatvori meni' : 'Otvori meni');
+  });
+  mnav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  window.addEventListener('resize', function(){ if (window.innerWidth > 991) closeMenu(); });
 
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        hamburgerBtn.classList.remove('active');
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
-      });
-    });
+  /* Header pri skrolu + aktivna stavka menija */
+  var header = document.getElementById('header');
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var navTargets = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    header.classList.toggle('scrolled', window.scrollY > 40);
+    var y = window.scrollY + 160, cur = -1;
+    navTargets.forEach(function(t, i){ if (t && t.offsetTop <= y) cur = i; });
+    navLinks.forEach(function(a, i){ a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
 
-    // Sticky header blur na skrolu
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 12) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
+  /* Hero: nacrt -> izgradnja -> predato */
+  var hv = document.getElementById('heroVisual');
+  var hs = document.getElementById('heroStatus');
+  var hsText = hs.querySelector('span');
+  if (motion) {
+    hs.classList.add('draft');
+    hsText.textContent = 'Nacrt';
+    setTimeout(function(){ hsText.textContent = 'Izgradnja'; }, 1900);
+    setTimeout(function(){ hs.classList.remove('draft'); hsText.textContent = 'Predato · sep 2025'; }, 3500);
+    setTimeout(function(){ hv.classList.add('built'); }, 4500);
+  }
 
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-
-      revealEls.forEach(el => observer.observe(el));
-    } else {
-      revealEls.forEach(el => el.classList.add('in-view'));
+  /* Reveal i brojači */
+  function fmt(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function count(el){
+    var to = +el.getAttribute('data-count');
+    var plain = el.hasAttribute('data-plain');
+    var from = plain ? to - 60 : 0;
+    var t0 = null, dur = 1600;
+    function step(t){
+      if (!t0) t0 = t;
+      var p = Math.min((t - t0) / dur, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      var v = Math.round(from + (to - from) * e);
+      el.textContent = plain ? v : fmt(v);
+      if (p < 1) requestAnimationFrame(step);
     }
-  </script>
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll('[data-count]');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        el.classList.add('in');
+        if (el.hasAttribute('data-count') && motion) count(el);
+        io.unobserve(el);
+      });
+    }, { threshold:.15, rootMargin:'0px 0px -40px 0px' });
+    document.querySelectorAll('.rv, .b-1').forEach(function(el){ io.observe(el); });
+    counters.forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.rv, .b-1').forEach(function(el){ el.classList.add('in'); });
+  }
 
+  /* Proces: linija napretka */
+  var steps = document.getElementById('steps');
+  var fill = document.getElementById('stepsFill');
+  var stepEls = steps.querySelectorAll('.step');
+  function onProc(){
+    var r = steps.getBoundingClientRect();
+    var mid = window.innerHeight * .6;
+    var total = r.height - 48;
+    var h = Math.max(0, Math.min(total, mid - r.top - 24));
+    fill.style.height = h + 'px';
+    stepEls.forEach(function(s){
+      var sr = s.getBoundingClientRect();
+      s.classList.toggle('on', sr.top + 24 < mid);
+    });
+  }
+  window.addEventListener('scroll', onProc, { passive:true });
+  window.addEventListener('resize', onProc);
+  onProc();
+
+  /* Gradilište kroz vreme */
+  var range = document.getElementById('scrubRange');
+  var frames = document.querySelectorAll('.frames img');
+  var knob = document.getElementById('scrubKnob');
+  var sfill = document.getElementById('scrubFill');
+  var stopBtns = document.querySelectorAll('#scrubStops button');
+  var flabel = document.getElementById('frameLabel');
+  var names = ['Pripremni radovi · avgust 2018', 'Montaža stubova', 'Krovni nosači', 'Noseća konstrukcija', 'Predat kompleks · novembar 2019'];
+  var lastStop = -1;
+  function setScrub(v){
+    v = Math.max(0, Math.min(400, v));
+    var i = Math.floor(v / 100), t = (v - i * 100) / 100;
+    frames.forEach(function(f, k){
+      f.style.opacity = k <= i ? 1 : (k === i + 1 ? t : 0);
+    });
+    var pct = v / 4;
+    knob.style.left = pct + '%';
+    sfill.style.width = pct + '%';
+    var s = Math.round(v / 100);
+    if (s !== lastStop) {
+      lastStop = s;
+      stopBtns.forEach(function(b, k){ b.classList.toggle('on', k === s); });
+      flabel.innerHTML = '<b>0' + (s + 1) + '</b><span>' + names[s] + '</span>';
+    }
+  }
+  var auto = null, userTook = false;
+  function stopAuto(){ userTook = true; if (auto) cancelAnimationFrame(auto); auto = null; }
+  range.addEventListener('input', function(){ stopAuto(); setScrub(+range.value); });
+  range.addEventListener('pointerdown', stopAuto);
+  stopBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      stopAuto();
+      var from = +range.value, to = +b.getAttribute('data-v'), t0 = null;
+      function anim(t){
+        if (!t0) t0 = t;
+        var p = Math.min((t - t0) / 600, 1), e = 1 - Math.pow(1 - p, 3);
+        var v = from + (to - from) * e;
+        range.value = v; setScrub(v);
+        if (p < 1) requestAnimationFrame(anim);
+      }
+      requestAnimationFrame(anim);
+    });
+  });
+  if (motion && 'IntersectionObserver' in window) {
+    setScrub(0); range.value = 0;
+    var scrubIO = new IntersectionObserver(function(en){
+      if (!en[0].isIntersecting || userTook) return;
+      scrubIO.disconnect();
+      // prolazak kroz faze sa kratkim zadržavanjem na svakoj
+      var t0 = null, seg = 1300, hold = 500;
+      function play(t){
+        if (userTook) return;
+        if (!t0) t0 = t;
+        var el = t - t0, per = seg + hold;
+        var k = Math.floor(el / per), r = el - k * per;
+        var v = k * 100 + (r < hold ? 0 : Math.min(1, (r - hold) / seg) * 100);
+        v = Math.min(400, v);
+        var e = v;
+        range.value = e; setScrub(e);
+        if (v < 400) auto = requestAnimationFrame(play);
+      }
+      auto = requestAnimationFrame(play);
+    }, { threshold:.5 });
+    scrubIO.observe(document.getElementById('scrub'));
+  } else {
+    setScrub(400);
+  }
+
+  /* Reference: filter i "prikaži sve" */
+  var grid = document.getElementById('refGrid');
+  var refs = grid.querySelectorAll('.ref');
+  var chips = document.querySelectorAll('.filters .chip');
+  var more = document.getElementById('refMore');
+  var moreWrap = more.parentNode;
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      var f = c.getAttribute('data-f');
+      chips.forEach(function(x){ x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+      grid.classList.toggle('filtered', f !== 'all');
+      refs.forEach(function(r){
+        r.classList.toggle('hide', f !== 'all' && r.getAttribute('data-c') !== f);
+      });
+      moreWrap.style.display = (f === 'all' && !grid.classList.contains('all')) ? '' : 'none';
+    });
+  });
+  more.addEventListener('click', function(){
+    grid.classList.add('all');
+    more.setAttribute('aria-expanded', 'true');
+    moreWrap.style.display = 'none';
+  });
+
+  /* Mapa: grad u listi <-> pin */
+  var pins = document.querySelectorAll('#pins .pin');
+  var cityBtns = document.querySelectorAll('#cities button');
+  function hi(city){
+    pins.forEach(function(p){ p.classList.toggle('on', p.getAttribute('data-city') === city); });
+    cityBtns.forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-city') === city); });
+  }
+  cityBtns.forEach(function(b){
+    var c = b.getAttribute('data-city');
+    b.addEventListener('mouseenter', function(){ hi(c); });
+    b.addEventListener('focus', function(){ hi(c); });
+    b.addEventListener('click', function(){ hi(c); });
+  });
+  pins.forEach(function(p){
+    p.addEventListener('mouseenter', function(){ hi(p.getAttribute('data-city')); });
+  });
+  hi('beograd');
+
+  /* Istorija: strelice */
+  var hist = document.getElementById('hist');
+  function histStep(dir){
+    var li = hist.querySelector('li');
+    hist.scrollBy({ left:dir * (li ? li.offsetWidth : 300) * 2, behavior:motion ? 'smooth' : 'auto' });
+  }
+  document.getElementById('histPrev').addEventListener('click', function(){ histStep(-1); });
+  document.getElementById('histNext').addEventListener('click', function(){ histStep(1); });
+
+  /* Forma: otvara email sa popunjenim upitom */
+  var form = document.getElementById('form');
+  var note = document.getElementById('formNote');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var bad = [];
+    ['f-ime', 'f-email', 'f-poruka'].forEach(function(id){
+      var el = document.getElementById(id);
+      var ok = el.value.trim() !== '' && (el.type !== 'email' || /\S+@\S+\.\S+/.test(el.value));
+      el.classList.toggle('err', !ok);
+      if (!ok) bad.push(el);
+    });
+    if (bad.length) {
+      note.className = 'form-note bad';
+      note.textContent = 'Popuni ime, ispravan email i opis projekta.';
+      bad[0].focus();
+      return;
+    }
+    var d = new FormData(form);
+    var body = [
+      'Ime i prezime: ' + d.get('ime'),
+      'Kompanija: ' + (d.get('firma') || '-'),
+      'Email: ' + d.get('email'),
+      'Telefon: ' + (d.get('telefon') || '-'),
+      'Vrsta objekta: ' + d.get('tip'),
+      'Okvirna površina: ' + (d.get('povrsina') || '-'),
+      'Lokacija: ' + (d.get('lokacija') || '-'),
+      '',
+      d.get('poruka')
+    ].join('\n');
+    var subject = 'Upit za ponudu - ' + d.get('tip');
+    window.location.href = 'mailto:office@gradjevinar.rs?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    note.className = 'form-note ok';
+    note.textContent = 'Otvara se tvoj email program sa popunjenim upitom. Ako se ne otvori, piši nam na office@gradjevinar.rs.';
+  });
+})();
+</script>
 </body>
 </html>
